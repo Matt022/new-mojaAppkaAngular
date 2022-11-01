@@ -1,0 +1,226 @@
+@import "../../../src/stylesheets/variables";
+@import "../../../src/stylesheets/mixins";
+@import "../../../src/stylesheets/functions";
+
+// ------------------------------------------
+
+.vyhladavacProduktov {
+    @include flex_Direction_Align_Justify(column, flex-start, flex-start);
+    margin: 0 auto;
+    border: 1px solid $whiteColor;
+    box-shadow: -1px 1px 2px 5px #7000ff61;
+
+    width: 97%;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    h2 {
+        font-size: 28px;
+        color: #ffffff;
+        font-weight: 700;
+        filter: $filterDropShadow;
+    }
+
+    .addNew {
+        margin-bottom: 10px;
+        width: fit-content;
+
+        margin-bottom: 10px;
+        color: rgb(57, 125, 252);
+        border: 1px solid rgb(240, 240, 240);
+        transition: 200ms;
+
+        &:hover {
+            background-color: rgb(57, 125, 252);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+    }
+
+    .filtre {
+        width: 100%;
+        display: flex;
+        margin: 10px 0;
+
+        .child-filter {
+            margin: 0 10px;
+        }
+
+        label {
+            margin-left: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            display: contents;
+        }
+
+    }
+
+    .mat-form-field {
+        width: fit-content;
+    }
+
+    select {
+        option {
+            color: rgb(0, 153, 255);
+        }
+    }
+}
+
+// ----------------------------------------------------------------
+
+.lastAdded {
+    @extend .vyhladavacProduktov;
+    @include flex_Direction_Align_Justify(column, flex-start, flex-start);
+
+    box-shadow: -1px 1px 2px 5px #00ffff;
+
+    h2 {
+        font-size: 28px;
+        color: rgb(26, 255, 161);
+        font-weight: 700;
+        filter: $filterDropShadow;
+    }
+
+    .rev {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        li {
+            list-style-type: none;
+            font-weight: bold;
+
+            span {
+                font-weight: normal;
+            }
+
+            .added {
+                font-size: 18px;
+                padding-left: 1.25rem;
+                font-weight: 900;
+                filter: $filterDropShadow;
+            }
+
+            .time {
+                font-weight: 700;
+                filter: $filterDropShadow;
+            }
+
+            .review {
+                font-size: 20px;
+                font-weight: 600;
+                padding-left: 1.25rem;
+            }
+        }
+
+        .where {
+            display: block;
+            list-style-type: none;
+            font-weight: 800;
+            filter: $filterDropShadow;
+            padding-right: 15px;
+        }
+    }
+}
+
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+
+// ------------------------------------------------------------------------------------------------
+//  RESPONSIBILITA
+
+@media (max-width:1350px) {
+    .products {
+        display: block;
+    }
+
+    .lastAdded,
+    .vyhladavacProduktov {
+        width: 90%;
+    }
+
+}
+
+@media (max-width:800px) {
+
+    .lastAdded,
+    .vyhladavacProduktov {
+        width: responsive(0%);
+    }
+}
+
+@media (max-width: 600px) {
+    .vyhladavacProduktov {
+        width: 100%;
+
+        h2 {
+            font-size: 5.5vw;
+        }
+
+        .filtre {
+            width: 100%;
+            display: flex;
+
+            .child-filter {
+                margin: 0 10px;
+            }
+
+            label {
+                margin-left: 5px;
+                font-weight: 700;
+                cursor: pointer;
+                width: 100%;
+                display: contents;
+            }
+        }
+
+        .mat-form-field {
+            font-size: 4vw;
+            width: 100%;
+        }
+    }
+
+    .lastAdded {
+        h2 {
+            font-size: 5.5vw;
+        }
+
+        .rev {
+            flex-direction: column;
+        }
+
+        .where {
+            padding-left: 20px;
+            border-top: 1px solid $whiteColor;
+        }
+
+        .review {
+            color: $whiteColor;
+        }
+    }
+
+}
+
+
+
+@media (max-width: 500px) {
+    .lastAdded {
+        .rev {
+            li {
+                font-size: 4vw;
+
+                .added,
+                .review,
+                .where {
+                    font-size: 4vw;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<input class="hladamProdukt" type="text" [(ngModel)]="searchTerm" (ngModelChange)="filtrovanie($event)" >
+<div class="vypisaneProdukty">
+    <ul>
+        <li *ngFor="let produkt of resultSet">{{produkt}}</li>
+
+    </ul>
+</div>

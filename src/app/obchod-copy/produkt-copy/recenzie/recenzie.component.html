@@ -1,0 +1,7 @@
+<div class="containeris">
+    <br>
+
+
+    <textarea class="area" cols="50" rows="10" [(ngModel)]="writtenReview"></textarea><br>
+    <button class="review" [disabled]="writtenReview == ''" (click)="pridanieRecenzie(writtenReview)">Pridať recenziu</button>
+</div>

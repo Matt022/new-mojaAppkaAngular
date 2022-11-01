@@ -1,0 +1,62 @@
+<div class="stepBack">
+    <button mat-raised-button routerLink="/dating-app"><i class="fa-solid fa-left-long"></i>Späť na zoznamku</button>
+</div>
+
+<div class="container">
+    <img src={{hladanyUser.image}} alt="">
+
+    <div class="info-user">
+        <h2>{{hladanyUser.meno}} {{hladanyUser.priezvisko}}, <span>{{hladanyUser.vek}} rokov</span></h2>
+
+        <hr>
+
+        <div class="all-info">
+
+            <div class="written-titles">
+                <h3>Height: </h3>
+                <h3>Gender: </h3>
+                <h3>Hair: </h3>
+                <h3>Eye color: </h3>
+                <h3>Figure: </h3>
+            </div>
+
+            <div class="user-information">
+                <h3><span> {{hladanyUser.heightInCm}} cm </span></h3>
+                <h3><span> {{hladanyUser.gender}} </span></h3>
+                <h3><span> {{hladanyUser.hairType}} {{hladanyUser.hairColor}} </span></h3>
+                <h3><span> {{hladanyUser.eyeColor}} </span></h3>
+                <h3><span> {{hladanyUser.figure}} </span></h3>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="info-user-preferences">
+            <h2>Preferences</h2>
+            <p>I am looking for {{gender}} that has {{typeOfHair(hladanyUser.preferences.hairColor)}} hair. My preffered
+                type of {{gender}} should be approximate {{hladanyUser.preferences.preferredApproximateheightInCm}} cm
+                tall and has {{hladanyUser.preferences.preferredApproximateFigureType}} figure.</p>
+            <p>{{hladanyUser.summaryInfo}}</p>
+        </div>
+
+
+        <button mat-raised-button (click)="toggleContact()">View user contact</button>
+        <hr>
+
+        <div class="user-contact" *ngIf="toggle">
+            <div class="user-contact-template">
+                <h3>Email: </h3>
+                <h3>Tel. Number: </h3>
+
+            </div>
+
+            <div class="user-contact-info">
+                <h3>{{hladanyUser.email}}</h3>
+                <h3>+{{hladanyUser.telephoneNumber.toLocaleString()}}</h3>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

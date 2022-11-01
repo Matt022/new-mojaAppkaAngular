@@ -1,0 +1,95 @@
+<h2 mat-dialog-title>Informácie o projekte</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <p>Tento projekt obsahuje niekoľko podstránok, ktoré sú viac objasnené nižšie. Celý projekt je naprogramovaný
+        prostredníctvom
+        Angularu a jeho komponentov. Väčšina podstránok medzi sebou komunikujú prostredníctvom servís a dependency
+        injection.
+        Určité komponenty fungujú na komunikácií Input Output zdieľanie dát medzi komponentmi.
+    </p>
+
+    <h3 routerLink="/">Domovská stránka</h3>
+    <p>Keď užívateľ otvorí tento projekt, tak sa mu zobrazia informácie o autorovi projektu,
+        ďalej sú tu spomenuté autorové záľuby. V záľubách ilustrácie sú zo stránky <a href="https://undraw.co/" target="_blank">Undraw</a>.
+        Soft skills sekcia je naprogramovaná pomocou knižnice <a href="https://swiperjs.com/" target="_blank">Swiper js</a> a opäť
+        ilustrácie sú použité zo stránky Undraw. Ďalej je sekcia, o autorových začiatkoch programovania.
+    </p>
+
+    <h3 routerLink="/prihlaska">Prihláška</h3>
+    <p>Toto je prvá vytvorená podstránka. Nesie iba názov a random vygenerovaný text zvaný Lorem Ipsum.
+    </p>
+
+    <h3 routerLink="/vyhladavac">Vyhladavac</h3>
+    <p>V podstránke vyhladavac je implementovaný autocomplete vyhľadávač, ktorý funguje pomocou
+        ngModelu a ngModelChange. Dáta sú pripravené v typescriptovom súbore daného komponentu.
+    </p>
+
+    <h3 routerLink="/obchod-copy">Obchod</h3>
+    <p>Komponent obchod je naprogramovaná v štýle e-shopu. Produkty je možné vložiť do košíka,
+        ktorého funkcionalita pridávania do košíka je zapracovaná pomocou observable a behaviour subject.
+        Nie je nikde použitý local storage. Dáta produktov sú namockované v typescriptovom súbore
+        a v servise je nasimulovaný fake api request oneskorený o pol sekundu.
+        Dáta produktov sú uložené v typescriptovom modeli, implementujú sa do servisy zvanej ProduktServis a odtiaľ
+        sa zdieľajú do komponentov, ktoré tieto dáta potrebujú. Dáta týchto produktov sú následne implementované
+        prostredníctvom pomocou promise.
+        V rámci jednotlivých produktov je možné zobraziť detaily konkrétneho produktu.
+    </p>
+
+    <h3 routerLink="/statistika-predaja">Štatistika</h3>
+    <p>Tento komponent súvisí s obchodom. V tejto podstránke je použitý  <a href="https://material.angular.io/" target="_blank">Angular Material</a>. V dátach týchto produktov je vypočítaný pomocou funkcie celkový obrat
+        za mesiac a za celé obdobie. Dáta sú opäť namockované v typescriptovom modeli, a podobným spôsobom ako v
+        obchode sú dáta uložené do servisy a zdieľajú sa do potrebných komponentov. <br><br>
+        Taktiež sú v ProduktServise naprogramované funkcie, ktoré vrátia hodnoty ako napríklad:
+
+        <li>celkový obrat za posledný mesiac</li>
+        <li>celkový obrat za celé obdobie</li>
+        <li>priemerná cena všetkých produktov</li>
+        <li>najpredávanejší produkt</li>
+
+        <br>
+
+        V podstránke zvanej štatistika je taktiež button na preklik produktov, ktoré nie sú dostupné na sklade a
+        všetky informácie sú podobné ako v hlavnej štatistike.
+    </p>
+
+    <h3 routerLink="/dating-app">Zoznamka</h3>
+    <p>Podstránka zoznamka slúži ako nefunkčná zoznamka ako niektoré poznáme, ale táto zoznámka
+        slúži iba na zobrazenie všetkých profilov. Pomocou OOP je vyskladaný jeden profil, takže je tam použitý
+        interface,
+        trieda, abstraktná trieda a všetko je to zakomponované do jedného samostatného profilu. Všetky profily
+        sú potom uložené do dvoch polí objektov (pre mužov a pre ženy) a ten je už potom vyobrazený na stránke.
+        Rovnako ako pri obchode, je možné sa prekliknúť na detaily daného profilu.
+    </p>
+
+    <h3 routerLink="/nakup-produktov">Nákupný košík</h3>
+    <p>Nákupný košík má za úlohu to isté ako poznáme zo všetkých eshopov. Produkty, ktoré boli v obchode pomocou
+        buttonu vložené do košíka sa zobrazia v košíku. V košíku je implemetovaná tabuľka, ktorá slúži na lepšie
+        vyobrazenie produktov ako:
+
+        <br>
+
+        <li>id prodduktu</li>
+        <li>názov produktu</li>
+        <li>cena produktu</li>
+        <li>možnosť odstránenia produktu zo zoznamu</li>
+
+        <br>
+
+        Taktiež sú tam tri buttony, ktoré znázorňujú následovné:
+
+        <br>
+
+        <li>možnosť vyprázdniť celý košík</li>
+        <li>možnosť vrátenia sa naspäť k nákupu</li>
+        <li>celková cena nákupu</li>
+
+        <br>
+
+        Keď sa v košíku nič nenachádza, je tam zobrazená grafika opäť pomocou Undraw ako už bolo spomenuté predtým
+        a informácia o tom
+
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Zatvoriť okno</button>
+</mat-dialog-actions>

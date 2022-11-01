@@ -1,0 +1,294 @@
+.tlacidlo {
+    width: 50%;
+    margin-bottom: 30px;
+    padding: 15px;
+
+    .mat-raised-button {
+        margin-bottom: 10px;
+        width: fit-content;
+
+        margin-bottom: 10px;
+        color: rgb(57, 125, 252);
+        border: 1px solid rgb(240, 240, 240);
+        transition: 200ms;
+
+        &:hover {
+            background-color: rgb(57, 125, 252);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .fa-solid {
+            margin-right: 10px;
+        }
+    }
+}
+
+// ------------------------------------------------------------
+
+.content.tabulka {
+    width: 100%;
+    box-shadow: none;
+
+    .mat-sort-header-content {
+        font-size: 25px;
+    }
+
+    .mat-paginator {
+        background: inherit;
+        width: 100%;
+        box-shadow: 0px -3px 20px -5px #000;
+    }
+
+    .mat-select-value,
+    .mat-paginator-range-label,
+    .mat-paginator-page-size-label {
+        font-size: 18px;
+    }
+
+    .mat-select-value,
+    .mat-paginator,
+    .mat-paginator-page-size .mat-select-trigger,
+    .mat-sort-header-container .mat-sort-header-arrow,
+    .mat-paginator-page-size .mat-select-trigger .mat-select-arrow-wrapper .mat-select-arrow {
+        color: $whiteColor;
+    }
+
+    .mat-table {
+        width: 100%;
+        background: inherit;
+        border-radius: 0 0 20px 20px;
+
+        .mat-header-cell {
+            font-size: 21px;
+            font-weight: 500;
+            border-bottom: 2px solid $whiteColor;
+        }
+
+        .mat-column-id {
+            @include matTableColumnsStyle(7%, 26px);
+        }
+
+        .mat-column-name {
+            @include matTableColumnsStyle(26%, 16px);
+            font-size: 20px;
+        }
+
+        .mat-column-price {
+            @include matTableColumnsStyle(10%, 16px);
+        }
+
+        .mat-column-stockCount {
+            @include matTableColumnsStyle(16%, 16px);
+        }
+
+        .mat-column-obrat_mesiac {
+            @include matTableColumnsStyle(20%, 16px);
+            padding-right: 0;
+        }
+
+        .mat-column-obrat_obdobie {
+            @include matTableColumnsStyle(20%, 16px);
+            border-right: 0;
+        }
+
+
+
+    }
+}
+
+.content.karty {
+    width: 100%;
+    min-height: 13.75rem;
+
+    display: flex;
+    flex-direction: row;
+    box-shadow: none;
+
+    .mat-card {
+        margin: auto;
+        margin-left: 7px;
+        width: 25%;
+
+        background: inherit;
+        color: $whiteColor;
+
+        .mat-card-subtitle {
+            color: $whiteColor;
+        }
+    }
+}
+
+// ------------------------------------------------------
+// responsibilita
+
+@media (max-width:1400px) {
+    .content.tabulka {
+        .mat-sort-header-content {
+            font-size: 1.8vw;
+        }
+
+        .mat-table {
+
+            .mat-column-id,
+            .mat-column-price,
+            .mat-column-stockCount,
+            .mat-column-obrat_obdobie,
+            .mat-column-obrat_mesiac {
+                font-size: 1vw;
+            }
+
+            .mat-column-name {
+                font-size: 1.55vw;
+                padding-right: 10px;
+            }
+
+        }
+    }
+}
+
+@media (max-width:1250px) {
+    .content.tabulka {
+
+        .mat-table {
+
+            .mat-column-id,
+            .mat-column-price,
+            .mat-column-stockCount,
+            .mat-column-obrat_obdobie,
+            .mat-column-obrat_mesiac {
+                font-size: 1.4vw;
+            }
+
+            .mat-column-name {
+                font-size: 1.55vw;
+                padding-right: 10px;
+            }
+
+        }
+    }
+
+
+    .content.karty {
+        width: 100%;
+        min-height: 13.75rem;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: auto;
+        box-shadow: none;
+
+        .mat-card {
+            margin: auto;
+            margin-left: 7px;
+            width: 98%;
+
+            background: inherit;
+            color: $whiteColor;
+
+            .mat-card-subtitle {
+                font-size: 1.4vw;
+            }
+
+            .mat-card-title {
+                font-size: 2.5vw;
+            }
+        }
+    }
+}
+
+@media (max-width:1200px) {
+    .content.tabulka {
+        width: 1150px;
+
+        .mat-sort-header-content {
+            font-size: 22px;
+        }
+
+        .mat-table {
+
+
+            .mat-column-id,
+            .mat-column-price,
+            .mat-column-stockCount,
+            .mat-column-obrat_obdobie,
+            .mat-column-obrat_mesiac {
+                font-size: 0.9063rem;
+            }
+
+            .mat-column-name {
+                font-size: 1.0391rem;
+                padding-right: 10px;
+            }
+
+        }
+    }
+
+    .content.karty {
+        width: 100%;
+        min-height: 13.75rem;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: auto;
+        box-shadow: none;
+
+        .mat-card {
+            margin: auto;
+            margin-left: 7px;
+            width: 98%;
+
+            background: inherit;
+            color: $whiteColor;
+
+            .mat-card-subtitle {
+                font-size: 17.5px;
+            }
+
+            .mat-card-title {
+                font-size: 23px;
+            }
+        }
+    }
+}
+
+
+@media (max-width:800px) {
+    .content.karty {
+        display: block;
+    }
+}
+
+@media (max-width:450px) {
+    .content.karty {
+        .mat-card {
+            .mat-card-subtitle {
+                font-size: 3vw;
+            }
+
+            .mat-card-title {
+                font-size: 6vw;
+            }
+        }
+    }
+}
+
+@media (max-width:350px) {
+    .content.karty {
+        .mat-card {
+
+            margin-left: -20px;
+            width: 83.4vw;
+
+            .mat-card-subtitle {
+                font-size: 4.2vw;
+            }
+
+            .mat-card-title {
+                font-size: 6vw;
+            }
+        }
+    }
+
+
+}

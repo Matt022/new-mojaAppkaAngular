@@ -1,0 +1,8 @@
+<div class="content flex">
+    <h3>Programovacie jazyky</h3>
+    <input type="text" class="vyhladavac" [(ngModel)]="searchTerm" (ngModelChange)="filter($event)" >
+
+    <div *ngFor="let thing of resultSet">
+        <p class="searched" (click)="clicking(thing)">{{thing}}</p>
+    </div>
+</div>

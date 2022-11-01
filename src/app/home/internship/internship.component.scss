@@ -1,0 +1,102 @@
+.internship {
+    margin-top: 20px;
+    box-shadow: none;
+
+    .left-text {
+        margin: 20px 100px;
+        width: 60%;
+
+
+        h2 {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: justify;
+            line-height: 2;
+        }
+    }
+
+    .it_v_kurze {
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+            width: 40%;
+        }
+    }
+}
+
+// -------------------------------------------
+// RESPONSIBILITA
+
+@media (max-width: 1300px) {
+    .internship {
+        .left-text {
+
+            h2 {
+                font-size: 2.3vw;
+            }
+
+            p {
+                font-size: 1.5vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .internship {
+        .left-text {
+            margin: 20px 50px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .internship {
+        .left-text {
+            h2 {
+                font-size: 3.4vw;
+            }
+
+            p {
+                font-size: 1.7vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .internship {
+        .left-text {
+            h2 {
+                font-size: 4.5vw;
+            }
+
+            p {
+                font-size: 1.7vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .internship {
+        .left-text {
+            margin: 20px 20px;
+
+            p {
+                font-size: 2.5vw;
+            }
+        }
+
+        .it_v_kurze {
+            img {
+                width: 80%;
+            }
+        }
+    }
+}

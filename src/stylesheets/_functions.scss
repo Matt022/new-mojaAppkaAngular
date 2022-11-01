@@ -1,0 +1,3 @@
+@function responsive($param) {
+    @return (100% - $param);
+}

@@ -1,0 +1,40 @@
+.forButton {
+    display: flex;
+    justify-content: center;
+
+    .shopping {
+        width: fit-content;
+        padding: 5px;
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+        transition: transform .3s ease;
+
+        i {
+            color: aliceblue;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.8));
+            transition: 100ms;
+
+            &:hover {
+                color: rgb(0, 244, 144);
+                transform: scale(1.3);
+            }
+        }
+
+        #lblCartCount {
+            font-size: 12px;
+            background: #ff0000;
+            color: #fff;
+            padding: 0 5px;
+            vertical-align: top;
+            margin-left: -10px;
+            position: absolute;
+        }
+
+        .badge {
+            padding-left: 9px;
+            padding-right: 9px;
+            border-radius: 9px;
+        }
+    }
+}

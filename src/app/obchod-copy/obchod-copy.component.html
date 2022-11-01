@@ -1,0 +1,40 @@
+<div class="vyhladavacProduktov">
+    <h2>Pridávanie nového produktu</h2>
+    <button class="addNew" routerLink="formular" mat-raised-button>Pridanie nového produktu</button>
+    <hr width="30%">
+
+    <h2>Vyhľadávač produktu</h2>
+    <div class="filtre">
+        <app-filter (outputovanieProduktov)="filtraciaProduktov($event)" class="child-filter"></app-filter>
+        <app-filter-options [iAmChange]="hodnotaZmeny" (changeDetected)="detekovanaZmena($event)" class="child-filter"></app-filter-options>
+    </div>
+
+    <hr width="30%">
+
+    <h2>Zoraďovač produktu</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Zoradenie</mat-label>
+        <select matNativeControl required #select (change)="zoradenie(select)">
+            <option value="Od A do Z">Od A do Z</option>
+            <option value="Od Z do A">Od Z do A</option>
+        </select>
+    </mat-form-field>
+</div>
+
+
+<div class="lastAdded" *ngIf="literallyLastReview.name!.length > 0">
+    <h2>Naposledy pridaná recenzia: </h2>
+    <div class="rev">
+        <li><span class="added">Pridané o: </span> <span class="time">{{literallyLastReview.date}}</span><br>
+            <span class="review">{{literallyLastReview.name}}</span><br>
+        </li>
+        <li class="where">{{literallyLastReview.productName}}</li>
+    </div>
+</div>
+
+<section class="products" *ngIf="productList">
+    <app-produkt-copy *ngFor="let produkt of newProductList | sortByABC: zmenaPoradia" [dataProdukt]="produkt" (allReviews)="addToAllReview($event)" (deletedProdukt)="deleteThisProduct($event)">
+
+
+    </app-produkt-copy>
+</section>

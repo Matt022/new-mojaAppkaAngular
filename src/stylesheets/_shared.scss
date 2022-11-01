@@ -1,0 +1,79 @@
+@import "./mixins";
+@import "./variables";
+
+* {
+    @include prefix();
+}
+
+body {
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Lato', sans-serif;
+    color: $whiteColor;
+    line-height: 1.6;
+
+    background-image: linear-gradient(to bottom, #00b2ff, #009eff, #0084ff, #4a62ff, #8f1efd);
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: $whiteColor;
+}
+
+h1,
+h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.container {
+    width: $width95;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.content {
+    margin: auto;
+    width: $width95;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px #004766,
+        -5px -5px 10px #00ffff,
+        -5px -5px 10px #0084bd,
+        5px 5px 10px #00e0ff;
+
+    padding: 20px;
+    min-height: 18.75rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}

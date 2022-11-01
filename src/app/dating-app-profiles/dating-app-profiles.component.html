@@ -1,0 +1,30 @@
+<div class="container-users">
+    <div class="male-users">
+        <h2>Male Users</h2>
+        <hr width="100%"><br>
+
+        <div class="user" *ngFor="let user of maleUsersProfiles">
+            <img src={{user.image}} alt="" width="50%">
+            <h2>{{user.meno}} {{user.priezvisko}}</h2>
+            <p>{{user.vek}} y. o.</p>
+            <p>{{user.gender}}</p>
+            <button mat-raised-button (click)="fullProfile(user)">Profil</button>
+        </div>
+    </div>
+
+
+
+    <div class="female-users">
+        <h2>Female Users</h2>
+        <hr width="100%"><br>
+
+
+        <div class="user" *ngFor="let user of femaleusersProfiles">
+            <img src={{user.image}} alt="" width="50%">
+            <h2>{{user.meno}} {{user.priezvisko}}</h2>
+            <p>{{user.vek}} y. o.</p>
+            <p>{{user.gender}}</p>
+            <button mat-raised-button (click)="fullProfile(user)">Profil</button>
+        </div>
+    </div>
+</div>

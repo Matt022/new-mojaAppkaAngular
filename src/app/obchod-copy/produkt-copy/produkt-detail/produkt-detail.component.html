@@ -1,0 +1,60 @@
+<div class="content" *ngIf="hladanePole">
+    <div class="before-header">
+        <button class="backtoProducts" mat-raised-button routerLink="/obchod-copy">Späť na všetky produkty</button>
+
+        <!-- <button class="deleteProdukt" mat-raised-button (click)="deleteProdukt(hladanePole)"><i class="fa-solid fa-trash fa-2x"></i>Odstrániť produkt</button> -->
+
+        <!-- <button class="toDaShopButton" mat-raised-button *ngIf="hladanePole.stockCount > 0" (click)="toShoppingCart(hladanePole)"><i class="fa-solid fa-cart-arrow-down fa-2x"></i>Vložiť do košíka</button> -->
+    </div>
+    <div class="header">
+        <h2 class="checkedLength">
+            {{hladanePole.name}}
+        </h2>
+        <h2>
+            {{hladanePole.category}}
+        </h2>
+    </div>
+
+    <div class="container grid">
+        <div class="first"></div>
+        <div class="second">
+            <div class="price-and-stock">
+                <h2 *ngIf="hladanePole.price">Price: <span>{{hladanePole.price}}€</span></h2>
+                <h2>Stock: <span [ngStyle]="{color: hladanePole.stockCount > 0 ? 'white' : 'red'}">{{hladanePole!.stockCount}}</span>
+                </h2>
+            </div>
+            <hr>
+
+            <div class="description" *ngIf="hladanePole!.description">
+                <h2>Description</h2>
+                <hr width="60%">
+                <p>{{hladanePole!.description}}</p>
+            </div>
+
+            <div class="vendors" *ngIf="hladanePole.stockCount > 0 && hladanePole.vendors">
+                <h2>Vendors</h2>
+                <hr width="60%">
+
+                <div class="list-of-vendors">
+
+                    <div *ngFor="let vendor of hladanePole.vendors">
+                        <p *ngIf="vendor.stockCount > 0"><span>{{vendor.name}}</span></p>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="containeris">
+                <h2>Recenzie</h2>
+                <hr width="60%">
+                <div *ngFor="let review of hladanePole.reviews">
+                    <p *ngIf="hladanePole.reviews"><span>{{review}}</span></p>
+                </div>
+                <hr>
+                <app-recenzie (reviewAdd)="addToDataProdukt($event)" (publicReview)="addToAllReviews($event)"></app-recenzie>
+
+            </div>
+        </div>
+    </div>
+</div>

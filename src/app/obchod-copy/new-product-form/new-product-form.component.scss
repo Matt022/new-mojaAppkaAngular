@@ -1,0 +1,388 @@
+@import "../../../../src/stylesheets/mixins";
+
+// ---------------------------------------------------------------------------------------------------------------------
+.form {
+    box-shadow: none;
+
+    h2 {
+        font-weight: 700;
+        font-size: 30px;
+        border-bottom: 2px solid rgb(255, 255, 255);
+        filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8));
+    }
+
+    section.addingNewProduct {
+        box-shadow: 5px 5px 10px #0000008f, -5px -5px 10px #0000005c, -5px -5px 10px #000000cc, 5px 5px 10px #111111;
+        padding: 20px;
+        border-radius: 10px;
+
+
+        button.buttons {
+            margin-left: 37px;
+            font-size: 17px;
+            padding: 5px 15px;
+
+            color: rgb(57, 125, 252);
+
+            transition: 200ms;
+
+            &:hover {
+                background-color: rgb(57, 125, 252);
+                color: #fff;
+                transform: scale(1.1);
+            }
+
+            i.fa-solid {
+                margin-right: 10px;
+            }
+        }
+
+        form.FormProductInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            gap: 10px;
+
+            border-radius: 5px;
+            color: #fff;
+            padding: 20px;
+            width: 100%;
+            min-height: 85vh;
+
+            margin: 0px auto;
+
+            button[type="submit"] {
+                width: fit-content;
+                background-color: #ffffff;
+                color: rgb(57, 125, 252);
+                box-shadow: 5px 5px 10px #004766, -5px -5px 10px #0000005c, -5px -5px 10px #0084bd, 5px 5px 10px #00e0ff;
+                font-size: 20px;
+                font-weight: 600;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: 1px solid #000;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 200ms;
+                margin-right: 20px;
+
+                &:hover {
+                    background-color: rgb(57, 125, 252);
+                    color: #ffffff;
+                    border: 1px solid rgb(240, 240, 240);
+                    transform: scale(1.1);
+                }
+
+                i.fa-solid {
+                    margin-right: 10px;
+                    font-size: 20px;
+                }
+            }
+
+
+            .product.basicInfo {
+                padding: 0 20px;
+
+
+                section.sectionProductInfo {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 30px;
+
+                    section.partOne {
+                        label.bold {
+                            font-weight: 600;
+                            font-size: 22px;
+                        }
+
+                        input,
+                        select {
+                            width: 100%;
+                            font-size: 16px;
+                            padding: 12px 20px;
+                            margin: 4px 0;
+                            display: inline-block;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            box-sizing: border-box;
+                            cursor: pointer;
+                        }
+
+                        input.ng-invalid.ng-touched {
+                            display: inline-block;
+                            border: 2px solid red;
+                        }
+
+                        div {
+                            @include errorDivAndSmall();
+                        }
+                    }
+
+                    section.partTwo {
+                        .fakeTextArea {
+                            margin-top: 10px;
+                            padding: 10px;
+                            resize: none;
+                            width: 100%;
+                            display: block;
+                        }
+
+                        label.bold {
+                            font-weight: 600;
+                            font-size: 22px;
+                        }
+
+                        input {
+                            width: 100%;
+                            font-size: 16px;
+                            padding: 12px 20px;
+                            margin: 7px 0;
+                            display: inline-block;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            box-sizing: border-box;
+                            cursor: pointer;
+                        }
+
+                        input.ng-invalid.ng-touched {
+                            display: inline-block;
+                            border: 2px solid red;
+                        }
+
+                        div {
+                            @include errorDivAndSmall();
+                        }
+                    }
+                }
+            }
+
+            section.vendorsAndReviews {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                width: 100%;
+
+                .vendors {
+                    padding: 20px;
+
+                    h2 {
+                        border-bottom: 1px solid #fff;
+                        margin-bottom: 20px;
+                        filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8));
+                    }
+
+                    section.justVendors {
+                        input {
+                            margin-bottom: 10px;
+                            padding: 10px;
+                            font-size: 16px;
+                        }
+
+                        input[type="number"] {
+                            margin-left: 10px;
+                            width: 25%;
+                        }
+
+
+
+                        input.ng-invalid.ng-touched {
+                            display: inline-block;
+                            border: 2px solid red;
+                        }
+
+                        div {
+                            @include errorDivAndSmall();
+                        }
+                    }
+
+                    button {
+                        font-size: 20px;
+                        color: rgb(57, 125, 252);
+
+                        transition: 200ms;
+
+                        &:hover {
+                            background-color: rgb(57, 125, 252);
+                            color: #fff;
+                            transform: scale(1.1);
+                        }
+
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+
+                .reviews {
+                    padding: 20px;
+
+                    .fakeTextArea {
+                        margin-top: 10px;
+                        padding: 10px;
+                        resize: none;
+                        width: 100%;
+                        font-size: 16px;
+                        display: block;
+                    }
+
+                }
+
+                button {
+                    margin-top: 10px;
+                    font-size: 20px;
+                    color: rgb(57, 125, 252);
+
+                    transition: 200ms;
+
+                    &:hover {
+                        background-color: rgb(57, 125, 252);
+                        color: #fff;
+                        transform: scale(1.1);
+                    }
+
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+            }
+
+            .submitError {
+                @include errorDivAndSmall();
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------
+@media (max-width: 1200px) {
+    .form {
+        width: 100%;
+
+        section.addingNewProduct {
+            form.FormProductInfo {
+                .product.basicInfo {
+                    section.sectionProductInfo {
+                        display: block;
+                        width: 95%;
+                        gap: 30px;
+                        margin: auto;
+                    }
+                }
+
+                section.vendorsAndReviews {
+                    display: block;
+                    gap: 10px;
+                    margin: auto;
+                    width: 95%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .form {
+        width: 100%;
+
+        section.addingNewProduct {
+            padding: 20px 0;
+
+            form.FormProductInfo {
+                padding: 20px 0;
+
+                .product.basicInfo {
+                    section.sectionProductInfo {
+                        width: 100%;
+                    }
+                }
+
+                section.vendorsAndReviews {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .form {
+        h2 {
+            font-size: 4vw;
+        }
+
+        section.addingNewProduct {
+
+            button.buttons {
+                font-size: 3.5vw;
+                margin-top: 10px;
+            }
+
+            form.FormProductInfo {
+                button[type="submit"] {
+                    font-size: 3.1vw;
+                }
+
+                .product.basicInfo {
+                    section.sectionProductInfo {
+
+                        section.partOne {
+                            label.bold {
+                                font-size: 3.5vw;
+                            }
+
+                            input,
+                            select {
+                                font-size: 2.8vw;
+                            }
+                        }
+
+                        section.partTwo {
+                            .fakeTextArea {
+                                font-size: 2.8vw;
+                            }
+
+                            label.bold {
+                                font-size: 3.5vw;
+                            }
+
+                            input {
+                                font-size: 2.8vw;
+                            }
+                        }
+                    }
+                }
+
+                section.vendorsAndReviews {
+                    .vendors {
+
+                        section.justVendors {
+                            input {
+                                font-size: 2.8vw;
+                                width: 47%;
+                            }
+
+                        }
+
+                        button {
+                            font-size: 2.8vw;
+
+                        }
+                    }
+
+                    .reviews {
+
+                        .fakeTextArea {
+                            font-size: 2.8vw;
+                        }
+
+                        button {
+                            font-size: 2.8vw;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

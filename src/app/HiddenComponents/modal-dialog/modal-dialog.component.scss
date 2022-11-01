@@ -1,0 +1,39 @@
+h2 {
+    font-weight: 800;
+}
+
+hr {
+    margin-bottom: 10px;
+}
+
+.mat-typography {
+    h3 {
+        display: inline-block;
+        letter-spacing: 0.235px;
+        font-weight: 800;
+        border-bottom: 1px solid #fff;
+
+        &:hover {
+            cursor: pointer;
+            border-bottom: 1px solid #000 ;
+        }
+    }
+
+    p {
+        text-align: justify;
+        a {
+            color: #000;
+            text-decoration: underline;
+            font-weight: 500;
+
+            display: inline-block;
+            font-size: 15px;
+
+            letter-spacing: 0.235px;
+
+            &:hover {
+                font-weight: 700;
+            }
+        }
+    }
+}

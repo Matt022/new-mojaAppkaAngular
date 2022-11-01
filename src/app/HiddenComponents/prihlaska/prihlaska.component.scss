@@ -1,0 +1,25 @@
+.content {
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+
+        .mat-form-field {
+            background-color: azure;
+            color: #000;
+            border-radius: 10px;
+
+            // .mat-form-field-wrapper {
+            //     .mat-form-field-infix {
+            //         .mat-input-element {
+            //             color: blue;
+            //         }
+            //     }
+            // }
+        }
+    }
+
+    .example-full-width {
+        width: 100%;
+    }
+}

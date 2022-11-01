@@ -1,0 +1,135 @@
+@import "../../../stylesheets/variables";
+@import "../../../stylesheets/mixins";
+
+.programming-begins {
+    @include flex_Direction_Align(row, center);
+
+    width: $width95;
+
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    padding: 77px;
+    border-radius: 42px;
+
+
+    .col-left,
+    .content {
+        flex: 1;
+    }
+
+    .col-left {
+
+
+        img {
+            border-radius: 20px;
+            filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8));
+        }
+    }
+
+    .content {
+        margin-left: 60px;
+        box-shadow: none;
+
+        .col-right {
+
+            h2 {
+                font-size: 30px;
+                font-weight: 700;
+
+            }
+
+            p {
+                font-weight: 500;
+                line-height: 1.8;
+                font-size: 18px;
+                text-align: justify;
+            }
+        }
+    }
+}
+
+// -------------------------------------------
+// RESPONSIBILITA
+
+@media (max-width: 1300px) {
+
+    .programming-begins {
+        .content {
+            .col-right {
+                h2 {
+                    font-size: 2vw;
+                }
+
+                p {
+                    font-size: 1.4vw;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .programming-begins {
+        width: 100%;
+        padding: 77px 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .programming-begins {
+        margin-top: 0;
+
+        .content {
+            .col-right {
+                h2 {
+                    font-size: 3.4vw;
+                }
+
+                p {
+                    font-size: 1.7vw;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .programming-begins {
+        margin-top: 0;
+
+        .content {
+            .col-right {
+                h2 {
+                    font-size: 4.5vw;
+                }
+
+                p {
+                    font-size: 2.2vw;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .programming-begins {
+        flex-direction: column-reverse;
+
+        .content {
+            .col-right {
+                margin-right: 20px;
+
+                h2 {
+                    text-align: right;
+                }
+
+                p {
+
+                    font-size: 2.6vw;
+                }
+            }
+        }
+    }
+}

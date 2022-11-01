@@ -1,0 +1,65 @@
+<div class="navbar">
+    <div class="container grid">
+        <mat-toolbar>
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button routerLink="/prihlaska" mat-menu-item >Prihláška</button>
+                <button routerLink="/vyhladavac" mat-menu-item >Vyhladavac</button>
+                <button routerLink="/obchod-copy" mat-menu-item >Obchod</button>
+                <button routerLink="/statistika-predaja" mat-menu-item >Štatistika</button>
+                <button routerLink="/dating-app" mat-menu-item>Zoznamka</button>
+                <app-shopping-cart-badge routerLink="/nakup-produktov"></app-shopping-cart-badge>
+            </mat-menu>
+
+            <h1 class="logo" routerLink="/">Matúš Beňuš</h1>
+
+        </mat-toolbar>
+
+        <nav>
+
+            <a routerLink="/prihlaska">Prihláška</a>
+            <a routerLink="/vyhladavac">Vyhladavac</a>
+            <a routerLink="/obchod-copy">Obchod</a>
+            <a routerLink="/statistika-predaja">Štatistika</a>
+            <a routerLink="/dating-app">Zoznamka</a>
+            <app-shopping-cart-badge routerLink="/nakup-produktov"></app-shopping-cart-badge>
+        </nav>
+
+
+    </div>
+</div>
+
+<main>
+    <router-outlet>
+
+    </router-outlet>
+</main>
+
+<footer class="footer bg-dark">
+    <div class="container grid">
+        <div class="info">
+            <h2>Matúš Beňuš</h2>
+            <a href="mailto:matusbenus02@gmail.com">matusbenus02@gmail.com</a><br>
+            <button mat-button (click)="openDialog()">O projekte</button>
+        </div>
+
+
+        <div class="social">
+            <a>
+                <i class="fa-regular fa-copyright fa-2x"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/mat%C3%BA%C5%A1-be%C5%88u%C5%A1-68a155240/" target="_blank">
+                <i class="fa-brands fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://www.facebook.com/itvkurze" target="_blank">
+                <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com/itvkurze/?theme=dark" target="_blank">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+        </div>
+    </div>
+</footer>

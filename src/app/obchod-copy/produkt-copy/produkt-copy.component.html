@@ -1,0 +1,61 @@
+<div class="content">
+    <div class="before-header">
+        <button class="detailsButton" mat-raised-button (click)="getTheDetailsToUrl(dataProdukt)"><i class="fa-solid fa-circle-info fa-2x"></i>Zobraziť detaily</button>
+
+        <button class="deleteProdukt" mat-raised-button (click)="deleteProdukt(dataProdukt)"><i class="fa-solid fa-trash fa-2x"></i>Odstrániť produkt</button>
+
+        <button class="toDaShopButton" mat-raised-button *ngIf="dataProdukt.stockCount > 0" (click)="toShoppingCart(dataProdukt)"><i class="fa-solid fa-cart-arrow-down fa-2x"></i>Vložiť do košíka</button>
+    </div>
+
+    <div class="header">
+        <h2 class="checkedLength">
+            {{dataProdukt.name}}
+        </h2>
+
+        <h2>
+            {{dataProdukt.category}}
+        </h2>
+    </div>
+
+    <div class="container grid">
+        <div class="first"></div>
+        <div class="second">
+            <div class="price-and-stock">
+                <h2 *ngIf="dataProdukt.price">Price: <span>{{dataProdukt.price}}€</span></h2>
+                <h2>Stock: <span [ngStyle]="{color: dataProdukt.stockCount > 0 ? 'white' : 'red'}">{{dataProdukt.stockCount}}</span>
+                </h2>
+            </div>
+            <hr>
+
+            <div class="description" *ngIf="dataProdukt.description">
+                <h2>Description</h2>
+                <hr width="60%">
+                <p>{{dataProdukt.description}}</p>
+            </div>
+
+            <div class="vendors" *ngIf="dataProdukt.stockCount > 0 && dataProdukt.vendors">
+                <h2>Vendors</h2>
+                <hr width="60%">
+
+                <div class="list-of-vendors">
+                    <div *ngFor="let vendor of dataProdukt.vendors">
+                        <p *ngIf="vendor.stockCount > 0"><span>{{vendor.name}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+
+
+            <div class="containeris">
+                <h2>Recenzie</h2>
+                <hr width="60%">
+                <div *ngFor="let review of dataProdukt.reviews">
+                    <p *ngIf="dataProdukt.reviews"><span>{{review}}</span></p>
+                </div>
+                <hr>
+                <app-recenzie (reviewAdd)="addToDataProdukt($event)" (publicReview)="addToAllReviews($event)"></app-recenzie>
+            </div>
+        </div>
+    </div>
+</div>

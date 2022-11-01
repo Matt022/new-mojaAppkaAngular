@@ -1,0 +1,99 @@
+@import "../../stylesheets/mixins";
+
+.container-users {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    .male-users,
+    .female-users {
+        padding: 10px;
+        text-align: center;
+        @include flex_Direction_Align(column, center);
+
+        h2 {
+            font-weight: 900;
+            font-size: 38px;
+            filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.8));
+        }
+
+        hr {
+            box-shadow: -1px -5px 10px 2px #000;
+        }
+
+        .user {
+            border: 1px solid #000;
+            width: 400px;
+            margin-bottom: 10px;
+            box-shadow: -1px 1px 10px 1px #000;
+            border-radius: 10px;
+            padding: 10px;
+
+            img {
+                border-radius: 5px;
+                filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.8));
+            }
+
+            h2 {
+                @extend h2;
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+
+            button {
+                color: black;
+                border: none;
+                font-size: 20px;
+                width: 200px;
+                padding: 5px;
+                border-radius: 5px;
+                transition: 100ms;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(228, 228, 228);
+                }
+            }
+        }
+    }
+}
+
+
+// ----------------------------------------------------------------
+@media (max-width: 900px) {
+    .container-users {
+        display: block;
+    }
+}
+
+@media (max-width: 450px) {
+    .container-users {
+
+        .male-users,
+        .female-users {
+            h2 {
+                font-size: 8vw;
+            }
+
+            .user {
+                width: 85vw;
+
+                h2 {
+                    font-size: 7vw;
+                }
+
+                p {
+                    font-size: 5vw;
+                }
+
+                button {
+                    font-size: 5vw;
+                    width: 79vw;
+                }
+            }
+        }
+    }
+}

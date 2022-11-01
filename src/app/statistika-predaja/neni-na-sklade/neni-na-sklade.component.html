@@ -1,0 +1,49 @@
+<div class="tlacidlo">
+    <button mat-raised-button routerLink="/statistika-predaja"><i class="fa-solid fa-chart-simple fa-2x"></i>Späť na štatisktiku všetkých produktov</button>
+</div>
+
+<div class="content tabulka">
+    <mat-paginator class="paginator" #paginator [length]="100" [pageSizeOptions]="[5, 10, 100]" aria-label="Select page"
+        showFirstLastButtons></mat-paginator>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" matSort>
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Názov produktu Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Názov produktu </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Cena Column -->
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} € </td>
+        </ng-container>
+
+        <!-- Stav na sklade Column -->
+        <ng-container matColumnDef="stockCount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Stav na sklade </th>
+            <td mat-cell *matCellDef="let element"> {{element.stockCount }}</td>
+        </ng-container>
+
+        <!-- Obratowy Column -->
+        <ng-container matColumnDef="obrat_mesiac">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Obrat (mesiac) </th>
+            <td mat-cell *matCellDef="let element"> {{element.obrat_mesiac}} €</td>
+        </ng-container>
+
+        <!-- Obratowy Column -->
+        <ng-container matColumnDef="obrat_obdobie">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Obrat (obdobie) </th>
+            <td mat-cell *matCellDef="let element"> {{element.obrat_obdobie}} €</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

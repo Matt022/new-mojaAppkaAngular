@@ -1,0 +1,114 @@
+<div class="form content">
+
+    <section class="addingNewProduct">
+        <button type="button" class="buttons" mat-raised-button routerLink="/obchod-copy"><i
+                class="fa-solid fa-left-long fa-2x"></i>Späť na všetky produkty</button>
+        <button type="button" class="buttons" mat-raised-button (click)="setDefaultValues()"><i
+                class="fa-solid fa-rectangle-list fa-2x"></i>Vygeneruj dáta</button>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="FormProductInfo">
+            <div class="product basicInfo" formGroupName="productDetails">
+                <h2>Pridávanie nového produktu</h2>
+                <section class="sectionProductInfo">
+
+                    <section class="partOne">
+                        <label for="title" class="bold">Názov produktu</label>
+                        <input type="text" id="title" placeholder="Zadajte názov produktu..." formControlName="title">
+
+                        <div>
+                            <small
+                                *ngIf="(!productForm.get('productDetails.title')!.valid && productForm.get('productDetails.title')!.touched)"><i class="fa-solid fa-circle-xmark"></i>Zadajte názov!</small>
+                        </div>
+
+                        <label for="category" class="bold">Kategória produktu</label>
+                        <select id="category" formControlName="category">
+                            <option value="Vyberte kategóriu" disabled selected>Vyberte kategóriu...</option>
+                            <option value="Herný">Herný</option>
+                            <option value="Kancelársky">Kancelársky</option>
+                            <option value="Tablet PC">Tablet PC</option>
+                            <option value="Pracovný">Pracovný</option>
+                            <option value="Ultrabook">Ultrabook</option>
+                            <option value="Bežné použitie">Bežné použitie</option>
+                        </select>
+
+
+                        <label for="price" class="bold">Cena produktu (v EUR €)</label>
+                        <input type="number" id="price" placeholder="Zadajte cenu produktu..." formControlName="price">
+
+                        <div>
+                            <small *ngIf="!productForm.get('productDetails.price')!.valid && productForm.get('productDetails.price')!.touched"><i class="fa-solid fa-circle-xmark"></i>Zadajte cenu!</small><br>
+                            <small *ngIf="productForm.get('productDetails.price')!.errors?.['lessOrEqualThanZero']"><i class="fa-solid fa-circle-xmark"></i>Cenová hodnota nesmie byť menšia alebo rovná nule!</small>
+                        </div>
+
+                    </section>
+
+                    <section class="partTwo">
+                        <label for="description" class="bold">Popis produktu</label>
+                        <textarea class="fakeTextArea" cols="65" rows="5" id="description"
+                            placeholder="Zadajte popis produktu..." formControlName="description"></textarea>
+
+                        <label for="soldPerMonth" class="bold">Predané množstvo za posledný mesiac</label>
+                        <input type="number" id="soldPerMonth"
+                            placeholder="Zadajte predané množstvo za posledný mesiac..." formControlName="soldPerMonth">
+
+                        <div>
+                            <small *ngIf="(!productForm.get('productDetails.soldPerMonth')!.valid && productForm.get('productDetails.soldPerMonth')!.touched)"><i class="fa-solid fa-circle-xmark"></i>Zadajte predané množstvo za posledný mesiac!</small>
+
+                            <small *ngIf="productForm.get('productDetails.soldPerMonth')!.errors?.['lessThanZero']"><i class="fa-solid fa-circle-xmark"></i>Počet predaných kusov menších ako nula byť nemôže.</small>
+
+                            <small *ngIf="validateMonthAndPeriod()"><i class="fa-solid fa-circle-exclamation"></i>Predané množstvo za mesiac nemôže byť väčšie ako predané množstvo za obdobie</small>
+
+                        </div>
+
+
+                        <label for="soldPerPeriod" class="bold">Predané množstvo za celé obdobie</label>
+                        <input type="number" id="soldPerPeriod"
+                            placeholder="Zadajte predané množstvo za celé obdobie..." formControlName="soldPerPeriod">
+
+                        <div>
+                            <small *ngIf="(!productForm.get('productDetails.soldPerPeriod')!.valid && productForm.get('productDetails.soldPerPeriod')!.touched)"><i class="fa-solid fa-circle-xmark"></i>Zadajte predané množstvo za celé obdobie!</small>
+                            <small *ngIf="productForm.errors?.['lessThanZero']"><i class="fa-solid fa-circle-xmark"></i>Počet predaných kusov menších ako nula byť nemôže.</small>
+                        </div>
+                    </section>
+                </section>
+            </div>
+            <hr width="100%">
+            <section class="vendorsAndReviews">
+                <div class="vendors" formArrayName="vendors">
+                    <h2>Pridávanie dodávateľov</h2>
+
+                    <ng-container *ngFor="let vendor of vendorsArray.controls;let index=index">
+
+                        <section class="justVendors" formGroupName="{{index}}">
+                            <input type="text" placeholder="názov dodávateľa..." formControlName="name">
+                            <input type="number" placeholder="množstvo..." formControlName="stockCount"><br>
+
+                            <div>
+                                <small *ngIf="(!vendorsArray.controls[index].get('name')!.valid && vendorsArray.controls[index].get('name')!.touched!) || (!vendorsArray.controls[index].get('stockCount')!.valid && vendorsArray.controls[index].get('stockCount')!.touched)">
+                                    <i class="fa-solid fa-circle-xmark"></i>Zadajte aspoň jedného dodávateľa a k nemu počet produktov na sklade
+                                </small>
+                            </div>
+                        </section>
+
+                    </ng-container>
+                    <button type="button" mat-raised-button (click)="addVendor()"><i class="fa-solid fa-circle-plus"></i>Pridaj dodávateľa</button>
+                </div>
+
+                <div class="reviews" formArrayName="reviews">
+                    <h2>Pridávanie recenzií</h2>
+
+                    <ng-container *ngFor="let review of getReviews.controls; index as i">
+                        <textarea class="fakeTextArea" cols="65" rows="4" id="description" placeholder="Zadajte recenziu k produktu..." formControlName="{{i}}"></textarea>
+                    </ng-container>
+                    <button type="button" mat-raised-button (click)="AddReviews()"><i class="fa-solid fa-circle-plus"></i>Pridaj recenziu</button>
+                </div>
+            </section>
+
+            <button type="submit" value="Pridaj produkt" id="btn"><i class="fa-solid fa-plus fa-2x"></i>Pridaj produkt</button>
+
+            <div class="submitError">
+                <small class="error" *ngIf="submitted"><i class="fa-solid fa-circle-xmark"></i>Neplatný formulár <i class="fa-solid fa-exclamation"></i></small>
+                <small class="success" *ngIf="sendProduct"><i class="fa-solid fa-circle-check"></i> Produkt pridaný</small>
+            </div>
+        </form>
+    </section>
+</div>
