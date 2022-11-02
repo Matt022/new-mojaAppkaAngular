@@ -2,9 +2,12 @@
     <div class="before-header">
         <button class="detailsButton" mat-raised-button (click)="getTheDetailsToUrl(dataProdukt)"><i class="fa-solid fa-circle-info fa-2x"></i>Zobraziť detaily</button>
 
+        <button class="toDaShopButton" mat-raised-button *ngIf="dataProdukt.stockCount > 0" (click)="toShoppingCart(dataProdukt)"><i class="fa-solid fa-cart-arrow-down fa-2x"></i>Vložiť do košíka</button>
+
+        <button class="productToEditButton" mat-raised-button (click)="openDialog(dataProdukt)"><i class="fa-solid fa-pen-to-square fa-2x"></i>Editovať produkt</button>
+
         <button class="deleteProdukt" mat-raised-button (click)="deleteProdukt(dataProdukt)"><i class="fa-solid fa-trash fa-2x"></i>Odstrániť produkt</button>
 
-        <button class="toDaShopButton" mat-raised-button *ngIf="dataProdukt.stockCount > 0" (click)="toShoppingCart(dataProdukt)"><i class="fa-solid fa-cart-arrow-down fa-2x"></i>Vložiť do košíka</button>
     </div>
 
     <div class="header">
@@ -45,15 +48,13 @@
             </div>
             <hr>
 
-
-
             <div class="containeris">
                 <h2>Recenzie</h2>
-                <hr width="60%">
+                <hr width="60%" *ngIf="dataProdukt.reviews">
                 <div *ngFor="let review of dataProdukt.reviews">
                     <p *ngIf="dataProdukt.reviews"><span>{{review}}</span></p>
                 </div>
-                <hr>
+                <hr *ngIf="!dataProdukt.reviews">
                 <app-recenzie (reviewAdd)="addToDataProdukt($event)" (publicReview)="addToAllReviews($event)"></app-recenzie>
             </div>
         </div>

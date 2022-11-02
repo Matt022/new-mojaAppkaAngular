@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 
 import { OpravenaProduktovaClassa } from '../../../SharedModels/opravenaProduktovaClassa.model';
 import { ProductService } from 'src/Services/product-service.service';
@@ -8,10 +8,10 @@ import { ProductService } from 'src/Services/product-service.service';
     templateUrl: './filter.component.html',
     styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnChanges {
     searchTerm: string = '';
     resultSet: string[] = [];
-    private _poleProduktov: OpravenaProduktovaClassa[];
+    @Input() _poleProduktov: OpravenaProduktovaClassa[];
 
     @Output() outputovanieProduktov: EventEmitter<OpravenaProduktovaClassa[]> = new EventEmitter();
 
@@ -19,12 +19,8 @@ export class FilterComponent implements OnInit {
 
     }
 
-    ngOnInit(): void {
-        this._produktService.getProductList().then((productList: OpravenaProduktovaClassa[]) => {
-            this._poleProduktov = productList;
-        }).catch((e: Error) => {
-            console.error(e.message);
-        });
+    ngOnChanges(): void {
+        this.filtrovanie(this.searchTerm);
     }
 
     /*

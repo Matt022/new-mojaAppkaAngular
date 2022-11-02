@@ -3,14 +3,14 @@
 </div>
 
 <div class="content tabulka">
-    <mat-paginator class="paginator" #paginator [length]="100" [pageSizeOptions]="[5, 10, 100]" aria-label="Select page"
+    <mat-paginator class="paginator" #paginatoris [length]="100" [pageSizeOptions]="[5, 10, 100]" aria-label="Select page"
         showFirstLastButtons></mat-paginator>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" matSort>
         <!-- Id Column -->
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.id.toLocaleString()}} </td>
         </ng-container>
 
         <!-- Názov produktu Column -->
@@ -22,7 +22,7 @@
         <!-- Cena Column -->
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
-            <td mat-cell *matCellDef="let element"> {{element.price}} € </td>
+            <td mat-cell *matCellDef="let element"> {{element.price.toLocaleString()}} € </td>
         </ng-container>
 
         <!-- Stav na sklade Column -->
@@ -34,13 +34,13 @@
         <!-- Obratowy Column -->
         <ng-container matColumnDef="obrat_mesiac">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Obrat (mesiac) </th>
-            <td mat-cell *matCellDef="let element"> {{element.obrat_mesiac}} €</td>
+            <td mat-cell *matCellDef="let element"> {{element.obrat_mesiac.toLocaleString()}} €</td>
         </ng-container>
 
         <!-- Obratowy Column -->
         <ng-container matColumnDef="obrat_obdobie">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Obrat (obdobie) </th>
-            <td mat-cell *matCellDef="let element"> {{element.obrat_obdobie}} €</td>
+            <td mat-cell *matCellDef="let element"> {{element.obrat_obdobie.toLocaleString()}} €</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -13,7 +13,7 @@ import { StatistickyProdukt } from 'src/SharedModels/statistickyProdukt.model';
     styleUrls: ['./neni-na-sklade.component.scss']
 })
 export class NeniNaSkladeComponent implements AfterViewInit {
-    @ViewChild('paginator') paginator: MatPaginator;
+    @ViewChild('paginatoris') paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
     dataSource: MatTableDataSource<StatistickyProdukt> = new MatTableDataSource<StatistickyProdukt>([]);

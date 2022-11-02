@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ShoppingService } from 'src/Services/shopping-service.service';
 
 
 import { OpravenaProduktovaClassa } from '../../../SharedModels/opravenaProduktovaClassa.model';
+import { NewProductFormComponent } from '../new-product-form/new-product-form.component';
 
 @Component({
     selector: 'app-produkt-copy',
@@ -11,7 +13,7 @@ import { OpravenaProduktovaClassa } from '../../../SharedModels/opravenaProdukto
     styleUrls: ['./produkt-copy.component.scss']
 })
 export class ProduktCopyComponent {
-    constructor(private _router: Router, private _shoppingService: ShoppingService) { }
+    constructor(private _router: Router, private _shoppingService: ShoppingService, private _dialog: MatDialog) { }
 
     @Input() dataProdukt: OpravenaProduktovaClassa = new OpravenaProduktovaClassa();
     @Output() allReviews = new EventEmitter<{ review: string; date: string; productName: string; }>();
@@ -45,5 +47,22 @@ export class ProduktCopyComponent {
 
     deleteProdukt(dataProdukt: OpravenaProduktovaClassa): void {
         this.deletedProdukt.emit(dataProdukt);
+    }
+
+    openDialog(dataProdukt: OpravenaProduktovaClassa) {
+        const dialogRef = this._dialog.open(NewProductFormComponent, {
+            width: '90vw', //sets width of dialog
+            height: '95vh', //sets height of dialog
+            maxWidth: '90vw', //overrides default width of dialog
+            maxHeight: '95vh', //overrides default height of dialog
+            panelClass: 'full-screen-modal',
+            data: dataProdukt
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+
+
     }
 }

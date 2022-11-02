@@ -55,4 +55,8 @@ export class ProduktDetailComponent implements OnInit, OnDestroy {
             productName: this.hladanePole.name
         });
     }
+
+    toShoppingCart(dataProdukt: OpravenaProduktovaClassa): void {
+        this._shoppingService.addToCart(dataProdukt);
+    }
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../Services/product-service.service';
 
 import { OpravenaProduktovaClassa } from '../../SharedModels/opravenaProduktovaClassa.model';
+import { NewProductFormComponent } from './new-product-form/new-product-form.component';
 
 @Component({
     selector: 'app-obchod-copy',
@@ -9,9 +11,9 @@ import { OpravenaProduktovaClassa } from '../../SharedModels/opravenaProduktovaC
     styleUrls: ['./obchod-copy.component.scss'],
 })
 export class ObchodCopyComponent implements OnInit {
-    constructor(private _productService: ProductService) { }
+    constructor(private _productService: ProductService, private _dialog: MatDialog) { }
 
-    productList: OpravenaProduktovaClassa[];
+    sourceList: OpravenaProduktovaClassa[] = [];
     newProductList: OpravenaProduktovaClassa[] = [];
 
     sortedArrayAZ: OpravenaProduktovaClassa[] = [];
@@ -25,8 +27,8 @@ export class ObchodCopyComponent implements OnInit {
 
     ngOnInit(): void {
         this._productService.getProductList().then((productsFromService: OpravenaProduktovaClassa[]) => {
-            this.productList = productsFromService;
-            this.newProductList = this.productList;
+            this.newProductList = productsFromService;
+            this.sourceList = productsFromService;
         }).catch((e: Error) => {
             console.error(e.message);
         });
@@ -45,7 +47,7 @@ export class ObchodCopyComponent implements OnInit {
             productName: '',
         };
 
-    addToAllReview(obj: { review: string; date: string; productName: string }): void {
+    addToAllReview(obj: { review: string; date: string; productName: string; }): void {
         this.literallyLastReview.name = obj.review;
         this.literallyLastReview.date = obj.date;
         this.literallyLastReview.productName = obj.productName;
@@ -82,12 +84,25 @@ export class ObchodCopyComponent implements OnInit {
 
     // --------------------------------------------------
     // odstránenie produktu
-    deleteThisProduct(dataProduct: OpravenaProduktovaClassa) : void {
+    deleteThisProduct(dataProduct: OpravenaProduktovaClassa): void {
+        this.newProductList = this.newProductList.filter(element => element.id !== dataProduct.id);
 
-        const thatIndex = this.newProductList.findIndex((object) => {
-            return object.id === dataProduct.id;
+        this._productService.deleteThisProduct(dataProduct);
+    }
+
+    addNewProductDialog() {
+        const dialogRef = this._dialog.open(NewProductFormComponent, {
+            width: '90vw', //sets width of dialog
+            height: '95vh', //sets height of dialog
+            maxWidth: '90vw', //overrides default width of dialog
+            maxHeight: '95vh', //overrides default height of dialog
+            panelClass: 'full-screen-modal',
         });
 
-        this.newProductList.splice(thatIndex, 1);
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+
+
     }
 }

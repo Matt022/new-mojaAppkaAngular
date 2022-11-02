@@ -1,12 +1,14 @@
 <div class="vyhladavacProduktov">
     <h2>Pridávanie nového produktu</h2>
-    <button class="addNew" routerLink="formular" mat-raised-button>Pridanie nového produktu</button>
+    <button class="addNew" (click)="addNewProductDialog()" mat-raised-button>Pridanie nového produktu</button>
     <hr width="30%">
 
     <h2>Vyhľadávač produktu</h2>
     <div class="filtre">
-        <app-filter (outputovanieProduktov)="filtraciaProduktov($event)" class="child-filter"></app-filter>
-        <app-filter-options [iAmChange]="hodnotaZmeny" (changeDetected)="detekovanaZmena($event)" class="child-filter"></app-filter-options>
+        <app-filter [_poleProduktov]="sourceList" (outputovanieProduktov)="filtraciaProduktov($event)"
+            class="child-filter"></app-filter>
+        <app-filter-options [iAmChange]="hodnotaZmeny" (changeDetected)="detekovanaZmena($event)" class="child-filter">
+        </app-filter-options>
     </div>
 
     <hr width="30%">
@@ -32,8 +34,9 @@
     </div>
 </div>
 
-<section class="products" *ngIf="productList">
-    <app-produkt-copy *ngFor="let produkt of newProductList | sortByABC: zmenaPoradia" [dataProdukt]="produkt" (allReviews)="addToAllReview($event)" (deletedProdukt)="deleteThisProduct($event)">
+<section class="products" *ngIf="newProductList">
+    <app-produkt-copy *ngFor="let produkt of newProductList | sortByABC: zmenaPoradia" [dataProdukt]="produkt"
+        (allReviews)="addToAllReview($event)" (deletedProdukt)="deleteThisProduct($event)">
 
 
     </app-produkt-copy>

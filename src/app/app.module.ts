@@ -25,6 +25,8 @@ import { DatingAppProfilesComponent } from './dating-app-profiles/dating-app-pro
 import { DetailedUserProfileComponent } from './dating-app-profiles/detailed-user-profile/detailed-user-profile.component';
 import { CvicnyComponent } from './HiddenComponents/cvicny/cvicny.component';
 import { ModalDialogComponent } from './HiddenComponents/modal-dialog/modal-dialog.component';
+import { MyNgIfDirective } from 'src/CustomDirectives/my-ng-if.directive';
+
 
 
 
@@ -44,6 +46,7 @@ const components = [
 const directives = [
     SetBackgroundDirective,
     HighlightDirective,
+    MyNgIfDirective,
 ];
 
 

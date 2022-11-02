@@ -3,12 +3,13 @@
 
 import { Product } from "./productclass.model";
 
+
 export class ProductModel {
     static productList: Product[] = [
         {
             id: 101,
             name: 'Acer Nitro 5 Obsidian',
-            category: 'Gaming',
+            category: 'Herný',
             price: 849,
             description:
                 'Herný notebook - Intel Core i5 9300H Coffee Lake, 15.6" IPS matný 1920 x 1080 120Hz, RAM 8GB DDR4, NVIDIA GeForce GTX 1650 4GB, SSD 512GB, numerická klávesnica, podsvietená klávesnica, webkamera, USB-C, WiFi 6, 56 Wh batéria, hmotnosť 2.5kg, Windows 10 Home, HDD upgrade kit (AN515-54-54KC) ',
@@ -47,7 +48,7 @@ export class ProductModel {
         {
             id: 102,
             name: 'Lenovo Legion 5 Pro',
-            category: 'Gaming',
+            category: 'Herný',
             price: 1539,
             description:
                 'Herný notebook - AMD Ryzen 7 5800H, 16" IPS antireflexný 2560 x 1600 165Hz, RAM 16GB DDR4, NVIDIA GeForce RTX 3070 8GB 140 W, SSD 1000GB, numerická klávesnica, podsvietená RGB klávesnica, webkamera, USB-C, WiFi 6, 80 Wh batéria, hmotnosť 2.45kg, bez operačného systému',
@@ -125,7 +126,7 @@ export class ProductModel {
         {
             id: 104,
             name: 'Dell Vostro 3500',
-            category: 'Kancelária',
+            category: 'Kancelársky',
             price: 480,
             description:
                 'Notebook - Intel Core i3 1115G4 Tiger Lake, 15" IPS matný 1920 x 1080, RAM 8GB DDR4, Intel UHD Graphics, SSD 256GB, numerická klávesnica, podsvietená klávesnica, webkamera, USB 3.2 Gen 1, čítačka odtlačkov prstov, WiFi 5, 42 Wh batéria, hmotnosť 1.98kg, Windows 10 Pro (NBD)',
@@ -309,10 +310,43 @@ export class ProductModel {
                 const resultObdobie = this.predaneMnozstvoObdobie * this.price!;
                 return resultObdobie;
             }
+        }, {
+            id: 109,
+            name: 'Macbook Air 14" M2 SK 2022',
+            category: 'Macbook',
+            price: 990,
+            vendors: [
+                { name: 'Alza', stockCount: 0 },
+                { name: 'Agem', stockCount: 0 },
+                { name: 'MediaMarkt', stockCount: 0 },
+                { name: 'Asbis', stockCount: 0 },
+                { name: 'Nay', stockCount: 0 },
+            ],
+            stockCount(): string | number {
+                let result: string | number = 0;
+                this.vendors!.forEach((vendor: { name: string, stockCount: number; }) => {
+                    result = +result + vendor.stockCount;
+                });
+
+                if (result > 0) {
+                    return result;
+                } else {
+                    result = 'Nedostupný';
+                    return result;
+                }
+            },
+            reviews: [],
+            predaneMnozstvoMesiac: 5,
+            predaneMnozstvoObdobie: 10,
+            vypocetObratuMesiac(): number {
+                const resultMesiac = this.predaneMnozstvoMesiac * this.price!;
+                return resultMesiac;
+            },
+            vypocetObratuObdobie(): number {
+                const resultObdobie = this.predaneMnozstvoObdobie * this.price!;
+                return resultObdobie;
+            }
         },
     ];
-
-
-
 }
 

@@ -34,6 +34,7 @@ export class ProductService {
         });
 
         return resultSet;
+
     }
 
     getProductList(): Promise<OpravenaProduktovaClassa[]> {
@@ -43,7 +44,7 @@ export class ProductService {
             } else {
                 setTimeout(() => {
                     this._cacheProductDataList = this.fakeApiRequest();
-                    resolve(this.fakeApiRequest());
+                    resolve(this._cacheProductDataList);
                 }, 500);
             }
         });
@@ -59,7 +60,7 @@ export class ProductService {
             //         resolve(hladaneIdProduktu);
             //     }
             // });
-            if (this.fakeApiRequest() && this._cacheProductDataList) {
+            if (!this._cacheProductDataList) {
                 this.getProductList().then((productList: OpravenaProduktovaClassa[]) => {
                     productList.forEach((produkt: OpravenaProduktovaClassa) => {
                         if (produkt.id === detailedIdProduct) {
@@ -174,6 +175,11 @@ export class ProductService {
         return result.name;
     }
 
+    // odstránenie produktu
+    deleteThisProduct(dataProduct: OpravenaProduktovaClassa): void {
+        ProductModel.productList = ProductModel.productList.filter(element => element.id !== dataProduct.id);
+    }
+
 
     // ----------------------------------------------------------
     // pridanie nového produktu z formuláru
@@ -197,6 +203,45 @@ export class ProductService {
             };
 
             this._cacheProductDataList.push(prod);
+        }
+    }
+
+    // ----------------------------------------------------------
+    editThisProduct(productToEdit: Product): void {
+
+        // pre štatistiku
+        ProductModel.productList.forEach((product: Product) => {
+            if (product.id === productToEdit.id) {
+                product.name = productToEdit.name;
+                product.category = productToEdit.category;
+                product.price = productToEdit.price;
+                product.description = productToEdit.description;
+                product.vendors = productToEdit.vendors;
+                product.reviews = productToEdit.reviews;
+                product.predaneMnozstvoMesiac = productToEdit.predaneMnozstvoMesiac;
+                product.predaneMnozstvoObdobie = productToEdit.predaneMnozstvoObdobie;
+
+            }
+        });
+
+        // pre obchod a zvyšok
+        if (this._cacheProductDataList) {
+            this._cacheProductDataList.forEach((product: OpravenaProduktovaClassa) => {
+                if (product.id === productToEdit.id) {
+                    product.id = productToEdit.id;
+                    product.name = productToEdit.name;
+                    product.category = productToEdit.category;
+                    product.price = productToEdit.price;
+                    product.stockCount = productToEdit.stockCount();
+                    product.description = productToEdit.description;
+                    product.vendors = productToEdit.vendors;
+                    product.reviews = productToEdit.reviews;
+                    product.predaneMnozstvoMesiac = productToEdit.predaneMnozstvoMesiac;
+                    product.predaneMnozstvoObdobie = productToEdit.predaneMnozstvoObdobie;
+                    product.obratMesiac = productToEdit.vypocetObratuMesiac();
+                    product.obratObdobie = productToEdit.vypocetObratuObdobie();
+                }
+            });
         }
     }
 }
