@@ -1,12 +1,17 @@
 <div class="content">
     <div class="before-header">
-        <button class="detailsButton" mat-raised-button (click)="getTheDetailsToUrl(dataProdukt)"><i class="fa-solid fa-circle-info fa-2x"></i>Zobraziť detaily</button>
+        <button class="detailsButton" mat-raised-button (click)="getTheDetailsToUrl(dataProdukt)"><i
+                class="fa-solid fa-circle-info fa-2x"></i>Zobraziť detaily</button>
 
-        <button class="toDaShopButton" mat-raised-button *ngIf="dataProdukt.stockCount > 0" (click)="toShoppingCart(dataProdukt)"><i class="fa-solid fa-cart-arrow-down fa-2x"></i>Vložiť do košíka</button>
+        <button class="toDaShopButton" mat-raised-button *ngIf="dataProdukt.stockCount > 0"
+            (click)="toShoppingCart(dataProdukt)"><i class="fa-solid fa-cart-arrow-down fa-2x"></i>Vložiť do
+            košíka</button>
 
-        <button class="productToEditButton" mat-raised-button (click)="openDialog(dataProdukt)"><i class="fa-solid fa-pen-to-square fa-2x"></i>Editovať produkt</button>
+        <button class="productToEditButton" mat-raised-button (click)="openDialog(dataProdukt)"><i
+                class="fa-solid fa-pen-to-square fa-2x"></i>Editovať produkt</button>
 
-        <button class="deleteProdukt" mat-raised-button (click)="deleteProdukt(dataProdukt)"><i class="fa-solid fa-trash fa-2x"></i>Odstrániť produkt</button>
+        <button class="deleteProdukt" mat-raised-button (click)="deleteProdukt(dataProdukt)"><i
+                class="fa-solid fa-trash fa-2x"></i>Odstrániť produkt</button>
 
     </div>
 
@@ -25,7 +30,8 @@
         <div class="second">
             <div class="price-and-stock">
                 <h2 *ngIf="dataProdukt.price">Price: <span>{{dataProdukt.price}}€</span></h2>
-                <h2>Stock: <span [ngStyle]="{color: dataProdukt.stockCount > 0 ? 'white' : 'red'}">{{dataProdukt.stockCount}}</span>
+                <h2>Stock: <span
+                        [ngStyle]="{color: dataProdukt.stockCount > 0 ? 'white' : 'red'}">{{dataProdukt.stockCount}}</span>
                 </h2>
             </div>
             <hr>
@@ -42,7 +48,9 @@
 
                 <div class="list-of-vendors">
                     <div *ngFor="let vendor of dataProdukt.vendors">
-                        <p *ngIf="vendor.stockCount > 0"><span>{{vendor.name}}</span></p>
+                        <div *ngIf="vendor.stockCount > 0">
+                            <p *ngIf="vendor.stockCount > 0"><span>{{vendor.name}}</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +63,8 @@
                     <p *ngIf="dataProdukt.reviews"><span>{{review}}</span></p>
                 </div>
                 <hr *ngIf="!dataProdukt.reviews">
-                <app-recenzie (reviewAdd)="addToDataProdukt($event)" (publicReview)="addToAllReviews($event)"></app-recenzie>
+                <app-recenzie (reviewAdd)="addToDataProdukt($event)" (publicReview)="addToAllReviews($event)">
+                </app-recenzie>
             </div>
         </div>
     </div>

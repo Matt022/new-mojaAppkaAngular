@@ -1,14 +1,15 @@
 <div class="content" *ngIf="hladanePole">
     <div class="before-header">
-        <button class="backtoProducts" mat-raised-button routerLink="/obchod-copy">Späť na všetky produkty</button>
+        <button class="backtoProducts" mat-raised-button routerLink="/obchod-copy"><i class="fa-solid fa-arrow-rotate-left fa-2x"></i>Späť na všetky produkty</button>
 
-        <!-- <button class="deleteProdukt" mat-raised-button (click)="deleteProdukt(hladanePole)"><i class="fa-solid fa-trash fa-2x"></i>Odstrániť produkt</button> -->
+        <button class="productToEditButton" mat-raised-button (click)="openDialog(hladanePole)"><i class="fa-solid fa-pen-to-square fa-2x"></i>Editovať produkt</button>
+
 
         <button class="toDaShopButton" mat-raised-button *ngIf="hladanePole.stockCount > 0"
             (click)="toShoppingCart(hladanePole)"><i class="fa-solid fa-cart-arrow-down fa-2x"></i>Vložiť do košíka</button>
     </div>
     <div class="header">
-        <h2 class="checkedLength">
+        <h2>
             {{hladanePole.name}}
         </h2>
         <h2>
@@ -38,12 +39,15 @@
 
                 <div class="list-of-vendors">
 
-                    <div *ngFor="let vendor of hladanePole.vendors">
-                        <p *ngIf="vendor.stockCount > 0"><span>{{vendor.name}}</span></p>
+                    <div *ngFor="let vendor of hladanePole.vendors" >
+                        <div *ngIf="vendor.stockCount > 0">
+                            <p *ngIf="vendor.stockCount > 0"><span>{{vendor.name}}</span></p>
+                        </div>
 
                     </div>
                 </div>
             </div>
+            <hr>
 
 
             <div class="containeris">

@@ -3,8 +3,7 @@
 
 .nakupny-kosik {
     margin: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 10px;
 
     .shopping-table {
         color: #000;
@@ -57,49 +56,23 @@
         margin-top: 20px;
 
         button {
-            margin-left: 10px;
+            margin-left: 20px;
             padding: 8px;
         }
 
 
         .trash {
-            color: #000;
-            font-weight: 700;
-
-            .fas.fa-trash {
-                margin-right: 5px;
-            }
-
-            &:hover {
-                background-color: rgb(173, 173, 173);
-            }
+            @include blackAndWhiteCustomButton;
         }
 
 
         .backToShop {
-            color: #000;
-            font-weight: 700;
-
-            .fa-solid {
-                margin-right: 5px;
-            }
-
-            &:hover {
-                background-color: rgb(173, 173, 173);
-            }
+            @include blueAndWhiteFilteredCustomButton;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.8));
         }
 
         .pay {
-            background-color: greenyellow;
-            color: #000;
-
-            .fa-solid {
-                margin-right: 5px;
-            }
-
-            &:hover {
-                background-color: rgb(126, 184, 39);
-            }
+            @include greenAndBlackCustomButton;
         }
     }
 }

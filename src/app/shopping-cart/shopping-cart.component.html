@@ -19,12 +19,14 @@
     </ul>
 
     <div class="buttons">
-        <button class="trash" mat-raised-button (click)="emptyCart(products)"><i class="fas fa-trash"></i>Vyprázdniť košík</button>
+        <button class="trash" mat-raised-button (click)="emptyCart(products)">
+            <i class="fas fa-trash fa-2x"></i>Vyprázdniť košík
+        </button>
         <button class="backToShop" mat-raised-button routerLink="/obchod-copy">
-            <i class="fa-solid fa-arrow-rotate-left"></i>Späť k nákupu
+            <i class="fa-solid fa-arrow-rotate-left fa-2x"></i>Späť k nákupu
         </button>
         <button class="pay" mat-raised-button>
-            <i class="fa-solid fa-bag-shopping"></i>
+            <i class="fa-brands fa-cc-visa fa-2x"></i>
             <strong>Celková cena: {{totalPrice()}} €</strong>
         </button>
     </div>

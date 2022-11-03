@@ -116,7 +116,6 @@
                                 <i class="fa-solid fa-circle-xmark"></i>Minimum je jeden dodávateľ s počtom kusov produktu na sklade
                             </small>
                         </div>
-
                     </div>
 
                     <div class="reviews" formArrayName="reviews">
@@ -140,11 +139,10 @@
                     <button type="button" mat-raised-button (click)="cancelChangesAndDialog()">Zatvoriť okno</button>
                 </section>
 
-
                 <div class="submitError">
                     <small class="error" *ngIf="submitted"><i class="fa-solid fa-circle-xmark"></i>Neplatný formulár <i class="fa-solid fa-exclamation"></i></small>
                     <small class="success" *ngIf="sendProduct"><i class="fa-solid fa-circle-check"></i> Produkt pridaný</small>
-                    <small class="success" *ngIf="editedChanges"><i class="fa-solid fa-circle-check"></i> Produkt pridaný</small>
+                    <small class="success" *ngIf="editedChanges"><i class="fa-solid fa-circle-check"></i> Zmeny boli uložené</small>
                     <small class="changes" *ngIf="cancelChanges"><i class="fa-solid fa-plug-circle-check"></i>Zmeny neboli uložené</small>
                 </div>
             </form>

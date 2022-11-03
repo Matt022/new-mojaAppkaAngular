@@ -17,7 +17,7 @@ export class SortPipePipe implements PipeTransform {
             });
 
         } else {
-            // zorad od a do z  default
+            // zorad od a do z default
             return value.sort((a: OpravenaProduktovaClassa, b: OpravenaProduktovaClassa) => {
                 if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
                     return 1;

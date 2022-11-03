@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 
 import { OpravenaProduktovaClassa } from '../../../SharedModels/opravenaProduktovaClassa.model';
-import { ProductService } from 'src/Services/product-service.service';
+
 
 @Component({
     selector: 'app-filter',
@@ -14,10 +14,6 @@ export class FilterComponent implements OnChanges {
     @Input() _poleProduktov: OpravenaProduktovaClassa[];
 
     @Output() outputovanieProduktov: EventEmitter<OpravenaProduktovaClassa[]> = new EventEmitter();
-
-    constructor(private _produktService: ProductService) {
-
-    }
 
     ngOnChanges(): void {
         this.filtrovanie(this.searchTerm);

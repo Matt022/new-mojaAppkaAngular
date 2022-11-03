@@ -5,6 +5,8 @@ import { ProductService } from 'src/Services/product-service.service';
 
 import { OpravenaProduktovaClassa } from '../../../../SharedModels/opravenaProduktovaClassa.model';
 import { ShoppingService } from 'src/Services/shopping-service.service';
+import { NewProductFormComponent } from '../../new-product-form/new-product-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-produkt-detail',
@@ -19,7 +21,7 @@ export class ProduktDetailComponent implements OnInit, OnDestroy {
     private _hladaneId: number;
     private _subscription: Subscription;
 
-    constructor(private _route: ActivatedRoute, private _productService: ProductService, private _shoppingService: ShoppingService) { }
+    constructor(private _route: ActivatedRoute, private _productService: ProductService, private _shoppingService: ShoppingService, private _dialog: MatDialog) { }
 
     ngOnInit(): void {
         //  zachytávanie route parametru po kliknutí na zobraziť detaily
@@ -40,6 +42,7 @@ export class ProduktDetailComponent implements OnInit, OnDestroy {
         this._subscription.unsubscribe();
     }
 
+    // pridanie recenzie ku konkrétnemu produktu
     addToDataProdukt(recenzia: string): void {
         if (this.hladanePole.reviews) {
             this.hladanePole.reviews.push(recenzia);
@@ -59,4 +62,21 @@ export class ProduktDetailComponent implements OnInit, OnDestroy {
     toShoppingCart(dataProdukt: OpravenaProduktovaClassa): void {
         this._shoppingService.addToCart(dataProdukt);
     }
+
+    // otvorenie dialog okna na editovanie produktu
+    openDialog(dataProdukt: OpravenaProduktovaClassa): void {
+        const dialogRef = this._dialog.open(NewProductFormComponent, {
+            width: '90vw',
+            height: '95vh',
+            maxWidth: '90vw',
+            maxHeight: '95vh',
+            panelClass: 'full-screen-modal',
+            data: dataProdukt
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
 }

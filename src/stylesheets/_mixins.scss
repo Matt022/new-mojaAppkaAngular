@@ -33,7 +33,7 @@
     border-right: 1px solid currentColor;
 }
 
-@mixin columnsInTable() {
+@mixin columnsInTable {
     div.col-1 {
         width: 10vw;
     }
@@ -106,5 +106,91 @@
         background-color: orange;
         color: #000;
         font-weight: 600;
+    }
+}
+
+// --------------------------------------------------------------
+
+@mixin blackAndWhiteCustomButton {
+    color: rgba(39, 39, 39, 0.89);
+    transition: 200ms;
+
+    &:hover {
+        background-color: rgba(39, 39, 39, 0.89);
+        color: #ffffff;
+        transform: scale(1.1);
+    }
+
+    .fa-solid, .fas.fa-trash {
+        margin-right: 10px;
+    }
+}
+
+@mixin whiteAndBlackCustomButton {
+    background-color: rgba(39, 39, 39, 0.89);
+    color: #ffffff;
+    transition: 200ms;
+
+    &:hover {
+        background-color: #ffffff;
+        color: rgba(39, 39, 39, 0.89);
+        transform: scale(1.1);
+    }
+
+    .fa-solid,
+    .fas.fa-trash {
+        margin-right: 10px;
+    }
+}
+
+
+
+
+@mixin greenAndBlackCustomButton {
+    background-color: greenyellow;
+    color: rgba(39, 39, 39, 0.89);
+    transition: 200ms;
+
+    &:hover {
+        background-color: rgba(39, 39, 39, 0.89);
+        color: rgb(153, 221, 50);
+        transform: scale(1.1);
+    }
+
+    .fa-solid, .fa-brands {
+        margin-right: 10px;
+    }
+}
+
+@mixin redBlackAndWhiteCustomButton {
+    background-color: #ffffff;
+    color: rgb(255, 47, 47);
+    transition: 200ms;
+
+    .fa-solid {
+        margin-right: 10px;
+    }
+
+    &:hover {
+        background-color: rgb(238, 43, 43);
+        color: rgba(39, 39, 39, 0.89);
+        transform: scale(1.1);
+    }
+}
+
+@mixin blueAndWhiteFilteredCustomButton {
+    color: #fff;
+    transition: 200ms;
+    background-color: inherit;
+    filter: drop-shadow(0 0px 0px rgba(0, 0, 0, 0.8));
+
+    &:hover {
+        background-color: #fff;
+        color: rgb(0, 69, 126);
+        transform: scale(1.1);
+    }
+
+    .fa-solid {
+        margin-right: 10px;
     }
 }

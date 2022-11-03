@@ -312,15 +312,16 @@ export class ProductModel {
             }
         }, {
             id: 109,
-            name: 'Macbook Air 14" M2 SK 2022',
-            category: 'Macbook',
-            price: 990,
+            name: 'MSI Alpha 15 B5EEK-099CZ',
+            category: 'Herný',
+            price: 1800,
+            description: 'Herný notebook – AMD Ryzen 7 5800H, 15.6" IPS matný 1920 × 1080 144Hz, RAM 16GB DDR4, AMD Radeon RX 6600M 8GB, SSD 1000GB, numerická klávesnica, podsvietená RGB klávesnica, webkamera, USB 3.2 Gen 1, USB-C, WiFi 6E, hmotnosť 2,35 kg, Windows 11 Home, 100% sRGB',
             vendors: [
-                { name: 'Alza', stockCount: 0 },
-                { name: 'Agem', stockCount: 0 },
+                { name: 'Alza', stockCount: 8 },
+                { name: 'Agem', stockCount: 1 },
                 { name: 'MediaMarkt', stockCount: 0 },
                 { name: 'Asbis', stockCount: 0 },
-                { name: 'Nay', stockCount: 0 },
+                { name: 'Nay', stockCount: 4 },
             ],
             stockCount(): string | number {
                 let result: string | number = 0;
@@ -336,8 +337,8 @@ export class ProductModel {
                 }
             },
             reviews: [],
-            predaneMnozstvoMesiac: 5,
-            predaneMnozstvoObdobie: 10,
+            predaneMnozstvoMesiac: 150,
+            predaneMnozstvoObdobie: 200,
             vypocetObratuMesiac(): number {
                 const resultMesiac = this.predaneMnozstvoMesiac * this.price!;
                 return resultMesiac;

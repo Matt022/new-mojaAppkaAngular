@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -11,7 +11,8 @@ import { OpravenaProduktovaClassa } from '../../../SharedModels/opravenaProdukto
 @Component({
     selector: 'app-new-product-form',
     templateUrl: './new-product-form.component.html',
-    styleUrls: ['./new-product-form.component.scss']
+    styleUrls: ['./new-product-form.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NewProductFormComponent implements OnInit {
     productForm: FormGroup;
@@ -120,7 +121,7 @@ export class NewProductFormComponent implements OnInit {
     // pridanie vendorov na základe dát
     addVendorsFromEditedData(): void {
         this.vendorsArray.removeAt(this.vendorsArray.length - 1);
-        this.data.vendors?.forEach((vendor: {name: string, stockCount: number}) => {
+        this.data.vendors?.forEach((vendor: { name: string, stockCount: number; }) => {
             (<FormArray>this.productForm.get('vendors')).push(new FormGroup({
                 name: new FormControl(vendor.name, Validators.required),
                 stockCount: new FormControl(vendor.stockCount, Validators.required),

@@ -22,7 +22,7 @@ export class ProduktCopyComponent {
     // pridanie recenzií ku konkrétnemu produktu
     addToDataProdukt(recenzia: string): void {
         if (this.dataProdukt.reviews) {
-            this.dataProdukt.reviews!.push(recenzia);
+            this.dataProdukt.reviews.push(recenzia);
         }
     }
 
@@ -36,6 +36,7 @@ export class ProduktCopyComponent {
         });
     }
 
+    //  navigovanie ku detailu konkrétneho produktu
     getTheDetailsToUrl(dataProdukt: OpravenaProduktovaClassa): void {
         this._router.navigate(["obchod-copy/produkt/" + dataProdukt.id]);
     }
@@ -45,16 +46,17 @@ export class ProduktCopyComponent {
         this._shoppingService.addToCart(dataProdukt);
     }
 
+    // odstránenie produktu
     deleteProdukt(dataProdukt: OpravenaProduktovaClassa): void {
         this.deletedProdukt.emit(dataProdukt);
     }
 
     openDialog(dataProdukt: OpravenaProduktovaClassa) {
         const dialogRef = this._dialog.open(NewProductFormComponent, {
-            width: '90vw', //sets width of dialog
-            height: '95vh', //sets height of dialog
-            maxWidth: '90vw', //overrides default width of dialog
-            maxHeight: '95vh', //overrides default height of dialog
+            width: '90vw', 
+            height: '95vh',
+            maxWidth: '90vw',
+            maxHeight: '95vh',
             panelClass: 'full-screen-modal',
             data: dataProdukt
         });
@@ -62,7 +64,5 @@ export class ProduktCopyComponent {
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
         });
-
-
     }
 }

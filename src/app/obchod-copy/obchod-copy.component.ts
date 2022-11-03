@@ -21,9 +21,7 @@ export class ObchodCopyComponent implements OnInit {
 
     hodnotaZmeny: boolean = false;
 
-
     zmenaPoradia: boolean = false;
-
 
     ngOnInit(): void {
         this._productService.getProductList().then((productsFromService: OpravenaProduktovaClassa[]) => {
@@ -92,11 +90,12 @@ export class ObchodCopyComponent implements OnInit {
 
     addNewProductDialog() {
         const dialogRef = this._dialog.open(NewProductFormComponent, {
-            width: '90vw', //sets width of dialog
-            height: '95vh', //sets height of dialog
-            maxWidth: '90vw', //overrides default width of dialog
-            maxHeight: '95vh', //overrides default height of dialog
+            width: '90vw',
+            height: '95vh',
+            maxWidth: '90vw',
+            maxHeight: '95vh',
             panelClass: 'full-screen-modal',
+
         });
 
         dialogRef.afterClosed().subscribe(result => {

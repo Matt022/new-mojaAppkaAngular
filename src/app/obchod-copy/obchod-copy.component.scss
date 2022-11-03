@@ -10,7 +10,7 @@
     border: 1px solid $whiteColor;
     box-shadow: -1px 1px 2px 5px #7000ff61;
 
-    width: 97%;
+    width: 100%;
     border-radius: 7px;
     margin-bottom: 20px;
     padding: 10px;
@@ -135,29 +135,36 @@
 // ------------------------------------------------------------------------------------------------
 //  RESPONSIBILITA
 
-@media (max-width:1350px) {
+@media (max-width:1600px) {
     .products {
         display: block;
     }
 
     .lastAdded,
     .vyhladavacProduktov {
-        width: 90%;
+        width: 80%;
     }
-
 }
 
-@media (max-width:800px) {
+@media (max-width:1300px) {
 
     .lastAdded,
     .vyhladavacProduktov {
-        width: responsive(0%);
+        width: 90%;
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .lastAdded,
+    .vyhladavacProduktov {
+        width: 100%;
     }
 }
 
 @media (max-width: 600px) {
     .vyhladavacProduktov {
-        width: 100%;
+
 
         h2 {
             font-size: 5.5vw;
@@ -204,10 +211,7 @@
             color: $whiteColor;
         }
     }
-
 }
-
-
 
 @media (max-width: 500px) {
     .lastAdded {

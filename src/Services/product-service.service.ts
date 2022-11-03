@@ -54,12 +54,6 @@ export class ProductService {
         return new Promise<OpravenaProduktovaClassa>((resolve) => {
             let hladaneIdProduktu: OpravenaProduktovaClassa;
 
-            // this.fakeApiRequest().forEach((produkt: OpravenaProduktovaClassa) => {
-            //     if (produkt.id === detailedIdProduct) {
-            //         hladaneIdProduktu = produkt;
-            //         resolve(hladaneIdProduktu);
-            //     }
-            // });
             if (!this._cacheProductDataList) {
                 this.getProductList().then((productList: OpravenaProduktovaClassa[]) => {
                     productList.forEach((produkt: OpravenaProduktovaClassa) => {
@@ -157,7 +151,8 @@ export class ProductService {
             }
         });
 
-        result = price / pocetProduktov;
+
+        result = Math.round((price / pocetProduktov) * 100) / 100;
 
         return result;
     }
@@ -228,7 +223,6 @@ export class ProductService {
         if (this._cacheProductDataList) {
             this._cacheProductDataList.forEach((product: OpravenaProduktovaClassa) => {
                 if (product.id === productToEdit.id) {
-                    product.id = productToEdit.id;
                     product.name = productToEdit.name;
                     product.category = productToEdit.category;
                     product.price = productToEdit.price;

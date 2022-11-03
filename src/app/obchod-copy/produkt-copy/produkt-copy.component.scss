@@ -1,209 +1,66 @@
 @import "../../../stylesheets/variables";
 @import "../../../stylesheets/mixins";
+@import "./mixinsUsedForProduct.scss";
 
 // --------------------------------------
 .content {
-    width: 95%;
-    min-height: 77vh;
-    padding: 0;
-    border-radius: 0.625rem;
-    margin-bottom: 30px;
-
-    box-shadow: 5px 5px 10px #004766, -5px -5px 10px #0000005c, -5px -5px 10px #0084bd, 5px 5px 10px #00e0ff;
+    @include mainContentHolderWidth(99%);
 
     .before-header {
-        min-height: 4rem;
-        border-bottom: 2px solid $whiteColor;
-        padding: 0;
-        margin: 0;
-        background-color: #4a60ff78;
+        @include beforeHeaderPrefix;
 
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
         justify-items: center;
-        padding: 0 20px;
 
         .mat-raised-button {
-            width: fit-content;
-            margin: 10px;
-            cursor: pointer;
-            min-height: 42px;
-            margin-top: 10px;
-
-            &:hover {
-                filter: none;
-            }
+            @include matRaisedButtonPrefix;
         }
 
         .detailsButton {
-            color: rgb(0, 0, 0);
-            transition: 200ms;
-
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.603);
-                color: #ffffff;
-                transform: scale(1.1);
-            }
-
-            .fa-solid {
-                margin-right: 10px;
-            }
+            @include blackAndWhiteCustomButton;
         }
 
         .toDaShopButton {
-            background-color: greenyellow;
-            color: rgb(0, 0, 0);
-            transition: 200ms;
-
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.603);
-                color: rgb(153, 221, 50);
-                transform: scale(1.1);
-            }
-
-            .fa-solid {
-                margin-right: 10px;
-            }
-        }
-
-        .deleteProdukt {
-            background-color: rgb(255, 254, 254);
-            color: rgb(255, 47, 47);
-            transition: 200ms;
-
-            .fa-solid {
-                margin-right: 10px;
-            }
-
-            &:hover {
-                background-color: rgb(238, 43, 43);
-                color: rgb(0, 0, 0);
-                transform: scale(1.1);
-            }
+            @include greenAndBlackCustomButton;
         }
 
         .productToEditButton {
-            color: #fff;
-            transition: 200ms;
-            background-color: inherit;
-            filter: drop-shadow(0 0px 0px rgba(0, 0, 0, 0.8));
+            @include blueAndWhiteFilteredCustomButton;
+        }
 
-            &:hover {
-                background-color: #fff;
-                color: rgb(0, 69, 126);
-                transform: scale(1.1);
-            }
-
-            .fa-solid {
-                margin-right: 10px;
-            }
+        .deleteProdukt {
+            @include redBlackAndWhiteCustomButton;
         }
     }
 
     .header {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 2px solid $whiteColor;
-        padding: 20px;
+        @include headerPrefix;
 
         h2 {
-            filter: drop-shadow(0 0px 3px rgba(0, 0, 0, 1));
-            font-weight: 900;
-            transition: 200ms;
-
-            &:first-child {
-                color: rgb(153, 255, 0);
-
-                &:hover {
-                    transform: scale(1.09);
-                }
-            }
-
-            &:last-child {
-                color: #ffa724;
-
-                &:hover {
-                    transform: scale(1.09);
-                }
-            }
+            @include nameAndCategory;
         }
     }
 
     .container {
-        padding: 0;
-        margin: 0;
-        min-height: 400px;
-
-        .first {
-            border-right: 2px solid $whiteColor;
-            height: inherit;
-            background-color: #4a60ff78;
-        }
-
-        .second {
-            height: inherit;
-
-            .price-and-stock {
-                display: flex;
-                justify-content: space-between;
-                padding: 17px 16px;
-                height: 12vh;
-
-                h2 {
-                    font-weight: 900;
-                    filter: drop-shadow(0 0px 2px rgba(0, 0, 0, 1));
-
-                    &:first-child {
-                        margin: 11px -16px;
-                    }
-
-                    &:last-child {
-                        margin: 11px 9px;
-                    }
-                }
-            }
-
-            .description p {
-                text-align: justify;
-            }
-
-            .vendors {
-                margin-bottom: 20px;
-
-                .list-of-vendors {
-                    display: flex;
-                    flex-wrap: wrap;
-                    padding-top: 0.625rem;
-
-                    div {
-                        width: 190px;
-                        margin: 5px 5px;
-                        text-align: center;
-
-                        p {
-                            @extend div;
-                            padding: 0.3125rem;
-                            margin: 0.375rem 1.5625rem;
-                            font-size: 1.375rem;
-                            border: 2px solid $whiteColor;
-                        }
-                    }
-                }
-            }
-        }
+        @include containerContentHolder;
     }
 
     .grid {
-        grid-template-columns: 1fr 5fr;
-        min-height: 99vh;
+        @include gridResetPrefix;
     }
 }
-
 
 // ---------------------------------------------------------
 // --------------------- RESPONSIBILITA --------------------
 // ---------------------------------------------------------
+@media (max-width: 1600px) {
+    .content {
+        width: 80%;
+    }
+}
+
 
 @media (max-width: 1500px) {
     .content {
@@ -239,6 +96,30 @@
         width: 90%;
     }
 }
+
+@media (max-width: 1100px) {
+    .content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 940px) {
+    .content {
+        .before-header {
+            grid-template-columns: repeat(2, 1fr);
+
+            .detailsButton,
+            .toDaShopButton,
+            .productToEditButton,
+            .deleteProdukt {
+                font-size: 16px;
+                width: 90%;
+                padding: 10px 20px;
+            }
+        }
+    }
+}
+
 
 @media (max-width: 900px) {
     .content {
@@ -276,17 +157,18 @@
     .content {
         .before-header {
             @include flex_Direction_Align(column, center);
-
             margin: auto;
             text-align: center;
             padding: 20px;
 
             .detailsButton,
             .toDaShopButton,
+            .productToEditButton,
             .deleteProdukt {
                 display: block;
+                margin: auto;
                 font-size: 16px;
-                width: 300px;
+                width: 70%;
                 padding: 10px 20px;
             }
         }
@@ -311,6 +193,7 @@
 
             .detailsButton,
             .toDaShopButton,
+            .productToEditButton,
             .deleteProdukt {
                 font-size: 16px;
                 width: 100%;

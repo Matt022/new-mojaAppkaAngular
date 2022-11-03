@@ -9,7 +9,8 @@
     .female-users {
         padding: 10px;
         text-align: center;
-        @include flex_Direction_Align(column, center);
+        display: block;
+        margin: auto;
 
         h2 {
             font-weight: 900;
