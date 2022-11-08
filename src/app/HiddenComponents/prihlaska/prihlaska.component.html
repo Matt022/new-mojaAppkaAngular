@@ -1,9 +1,6 @@
-<div class="content flex">
-    <h1>{{thaNameOfThisComponent}} </h1>
-    <p>Danish I love chocolate cake liquorice cookie croissant bear claw cake. Gummi bears gummies pie jelly fruitcake
-        sugar plum candy.
-        Chupa chups I love cake ice cream bonbon candy halvah. Apple pie gummi bears macaroon apple pie I love wafer
-        soufflé I love.
-        Jelly-o I love jujubes lemon drops I love chocolate bar.
-        Macaroon marshmallow marzipan dessert gingerbread croissant I love.</p>
-</div>
+<section class="content">
+    <h2>MyNgIf a MyNgElse</h2>
+    <h3 *myNgIf="login">Odhlás sa z účtu</h3>
+    <h3 *myNgElse="!login">Prihlás sa do svojho účtu</h3>
+    <button mat-raised-button (click)="toggleLogin()">{{login ? "Log out" : "Log in"}}</button>
+</section>

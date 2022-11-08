@@ -1,19 +1,3 @@
 <section class="content">
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th>Numbers</th>
-            <th>Age</th>
-        </tr>
-        <ng-container *ngFor="let data of dataList">
-            <tr>
-                <td [attr.rowspan]="data.numbers.length + 1">{{data.pname}}</td>
-            </tr>
-            <tr *ngFor="let number of data.numbers;">
-                <td>{{number}}</td>
-            </tr>
-            
-
-        </ng-container>
-    </table>
+    <h2>Cvičný komponent pre vzdelávacie účely</h2>
 </section>

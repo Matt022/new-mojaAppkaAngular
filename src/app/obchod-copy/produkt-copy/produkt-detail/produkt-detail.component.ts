@@ -78,8 +78,4 @@ export class ProduktDetailComponent implements OnInit, OnDestroy {
             console.log(`Dialog result: ${result}`);
         });
     }
-
-    // connect to MongoDB?
-    
-
 }

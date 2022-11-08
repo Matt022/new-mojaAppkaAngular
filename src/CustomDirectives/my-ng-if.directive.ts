@@ -1,12 +1,23 @@
-import { Directive } from '@angular/core';
+import { Directive, ViewContainerRef, TemplateRef, OnChanges, Input } from '@angular/core';
 
 @Directive({
     selector: '[myNgIf]'
 })
-export class MyNgIfDirective {
+export class MyNgIfDirective implements OnChanges {
+    @Input() myNgIf: boolean;
 
-    // constructor(public el: ElementRef) {
-    //     console.log(el.nativeElement);
-    // }
 
+    constructor(private view: ViewContainerRef, private template: TemplateRef<HTMLElement>) {
+
+    }
+
+    ngOnChanges(): void {
+        if (this.myNgIf) {
+            // renderovanie templatu
+            this.view.createEmbeddedView(this.template);
+        } else {
+            //odstránenie templatu
+            this.view.clear();
+        }
+    }
 }

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class PrihlaskaComponent {
     thaNameOfThisComponent: string = 'Prihláška';
+    login: boolean = false;
+
+    toggleLogin(): void {
+        this.login = !this.login;
+    }
 }
