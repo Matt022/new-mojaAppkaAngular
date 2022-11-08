@@ -191,6 +191,7 @@ export class NewProductFormComponent implements OnInit {
             }, 1000);
 
         } else {
+            this.productForm.markAllAsTouched();
             this.submitted = true;
 
             setTimeout(() => {

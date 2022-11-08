@@ -10,14 +10,14 @@
             <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="FormProductInfo">
                 <div class="product basicInfo" formGroupName="productDetails">
                     <h2>Pridávanie nového produktu</h2>
-                    <section class="sectionProductInfo">
 
+                    <section class="sectionProductInfo">
                         <section class="partOne">
                             <label for="title" class="bold">Názov produktu</label>
                             <input type="text" id="title" placeholder="Zadajte názov produktu..." formControlName="title">
 
                             <div>
-                                <small *ngIf="(!productForm.get('productDetails.title')!.valid && productForm.get('productDetails.title')!.touched)">
+                                <small *ngIf="productForm.get('productDetails.title')!.errors?.['required'] && productForm.get('productDetails.title')!.touched">
                                     <i class="fa-solid fa-circle-xmark"></i>Zadajte názov!
                                 </small>
                             </div>
@@ -38,7 +38,7 @@
                             <input type="number" id="price" placeholder="Zadajte cenu produktu..." formControlName="price">
 
                             <div>
-                                <small *ngIf="!productForm.get('productDetails.price')!.valid && productForm.get('productDetails.price')!.touched">
+                                <small *ngIf="productForm.get('productDetails.price')!.errors?.['required'] && productForm.get('productDetails.price')!.touched">
                                     <i class="fa-solid fa-circle-xmark"></i>Zadajte cenu!
                                 </small><br>
                                 <small *ngIf="productForm.get('productDetails.price')!.errors?.['lessOrEqualThanZero']">
@@ -49,16 +49,13 @@
 
                         <section class="partTwo">
                             <label for="description" class="bold">Popis produktu</label>
-                            <textarea class="fakeTextArea" cols="65" rows="5" id="description"
-                                placeholder="Zadajte popis produktu..." formControlName="description"></textarea>
+                            <textarea class="fakeTextArea" cols="65" rows="5" id="description" placeholder="Zadajte popis produktu..." formControlName="description"></textarea>
 
                             <label for="soldPerMonth" class="bold">Predané množstvo za posledný mesiac</label>
-                            <input type="number" id="soldPerMonth"
-                                placeholder="Zadajte predané množstvo za posledný mesiac..."
-                                formControlName="soldPerMonth">
+                            <input type="number" id="soldPerMonth" placeholder="Zadajte predané množstvo za posledný mesiac..." formControlName="soldPerMonth">
 
                             <div>
-                                <small *ngIf="(!productForm.get('productDetails.soldPerMonth')!.valid && productForm.get('productDetails.soldPerMonth')!.touched)">
+                                <small *ngIf="productForm.get('productDetails.soldPerMonth')!.errors?.['required'] && productForm.get('productDetails.soldPerMonth')!.touched">
                                     <i class="fa-solid fa-circle-xmark"></i>Zadajte predané množstvo za posledný mesiac!
                                 </small>
 
@@ -76,10 +73,10 @@
                             <input type="number" id="soldPerPeriod" placeholder="Zadajte predané množstvo za celé obdobie..." formControlName="soldPerPeriod">
 
                             <div>
-                                <small *ngIf="(!productForm.get('productDetails.soldPerPeriod')!.valid && productForm.get('productDetails.soldPerPeriod')!.touched)">
+                                <small *ngIf="productForm.get('productDetails.soldPerPeriod')!.errors?.['required'] && productForm.get('productDetails.soldPerPeriod')!.touched">
                                     <i class="fa-solid fa-circle-xmark"></i>Zadajte predané množstvo za celé obdobie!
                                 </small>
-                                <small *ngIf="productForm.errors?.['lessThanZero']">
+                                <small *ngIf="productForm.get('productDetails.soldPerPeriod')!.errors?.['lessThanZero']">
                                     <i class="fa-solid fa-circle-xmark"></i>Počet predaných kusov menších ako nula byť nemôže.
                                 </small>
                             </div>

@@ -1,3 +1,30 @@
-<ng-template *myNgIf>
-    <h1>Angular rocks</h1>
-</ng-template>
+<section class="content">
+    <div class="form-area">
+        <h1>Create Product</h1>
+        <form #booksForm="ngForm" (ngSubmit)="onBookCreate(booksForm.value)">
+            <label>Book Name</label>
+            <input type="text" name="title" ngModel>
+
+            <label>Book price</label>
+            <input type="number" name="price" ngModel>
+
+            <div class="buttons">
+                <input type="submit" value="{{editMode ? 'Update Book' : 'Create Book'}}">
+                <button type="button" (click)="cancelAllBooks()">Cancel all books</button>
+            </div>
+        </form>
+    </div>
+
+    <hr width="100%">
+
+    <section class="books">
+
+        <div class="book" *ngFor="let book of books; index as i">
+            <h3>{{i}}</h3>
+            <h3>{{book.title}}</h3>
+            <h3>{{book.price}} €</h3>
+            <button (click)="onBookDelete(book.id)">Delete book</button>
+            <button (click)="onBookUpdate(book.id)">Edit book</button>
+        </div>
+    </section>
+</section>

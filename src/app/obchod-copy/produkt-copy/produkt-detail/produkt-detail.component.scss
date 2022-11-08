@@ -92,7 +92,16 @@
             .second {
                 .vendors .list-of-vendors {
                     display: block;
-                    margin-left: -23px;
+                    margin: auto;
+
+                    div {
+                        div {
+                            border: 2px solid aliceblue;
+                            width: 80%;
+                            margin: 10px auto;
+                            text-align: center;
+                        }
+                    }
                 }
             }
         }
@@ -130,11 +139,24 @@
 
 @media (max-width: 500px) {
     .content {
+        .before-header {
+
+            button.backtoProducts,
+            button.toDaShopButton,
+            button.productToEditButton {
+                font-size: 3.2vw;
+                width: 100%;
+                padding: 10px 0;
+                margin: 15px auto;
+            }
+        }
+
         .container {
             .second {
                 .price-and-stock {
                     display: block;
                     padding: 17px 0px;
+                    margin-bottom: 30px;
 
                     h2 {
                         font-size: 6vw;
@@ -160,15 +182,17 @@
                 }
 
                 .vendors {
-
                     h2 {
                         font-size: 5vw;
                     }
 
                     .list-of-vendors {
                         div {
-                            p {
-                                font-size: 5vw;
+                            div {
+                                width: 100%;
+                                p {
+                                    font-size: 5vw;
+                                }
                             }
                         }
                     }
@@ -185,22 +209,6 @@
         .header {
             h1 {
                 font-size: 7vw;
-            }
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    .content {
-        .container {
-            .second {
-                .vendors {
-                    .list-of-vendors {
-                        p {
-                            font-size: 5vw;
-                        }
-                    }
-                }
             }
         }
     }

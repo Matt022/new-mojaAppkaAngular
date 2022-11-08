@@ -26,6 +26,7 @@ import { DetailedUserProfileComponent } from './dating-app-profiles/detailed-use
 import { CvicnyComponent } from './HiddenComponents/cvicny/cvicny.component';
 import { ModalDialogComponent } from './HiddenComponents/modal-dialog/modal-dialog.component';
 import { MyNgIfDirective } from 'src/CustomDirectives/my-ng-if.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -40,7 +41,6 @@ const components = [
     DetailedUserProfileComponent,
     CvicnyComponent,
     ModalDialogComponent,
-
 ];
 
 const directives = [
@@ -49,13 +49,11 @@ const directives = [
     MyNgIfDirective,
 ];
 
-
 @NgModule({
     declarations: [
         AppComponent,
         ...components,
         ...directives,
-
     ],
     imports: [
         CommonModule,
@@ -66,7 +64,8 @@ const directives = [
         SwiperModule,
         MatarialovyModulModule,
         ReactiveFormsModule,
-        HomeModule
+        HomeModule,
+        HttpClientModule
     ],
     bootstrap: [AppComponent]
 })

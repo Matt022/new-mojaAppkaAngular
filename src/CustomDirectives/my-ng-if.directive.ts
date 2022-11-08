@@ -1,12 +1,12 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive } from '@angular/core';
 
 @Directive({
     selector: '[myNgIf]'
 })
 export class MyNgIfDirective {
 
-    constructor(private el: ElementRef) {
-        console.log(el.nativeElement);
-    }
+    // constructor(public el: ElementRef) {
+    //     console.log(el.nativeElement);
+    // }
 
 }

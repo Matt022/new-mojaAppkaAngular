@@ -79,4 +79,7 @@ export class ProduktDetailComponent implements OnInit, OnDestroy {
         });
     }
 
+    // connect to MongoDB?
+    
+
 }
