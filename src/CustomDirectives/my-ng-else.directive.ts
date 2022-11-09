@@ -12,7 +12,7 @@ export class MyNgElseDirective implements OnChanges {
     }
 
     ngOnChanges(): void {
-        if (!this.myNgElse) {
+        if (this.myNgElse) {
             //odstránenie templatu
             this.view.clear();
         } else {

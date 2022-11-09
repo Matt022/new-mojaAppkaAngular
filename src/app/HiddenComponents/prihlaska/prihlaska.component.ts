@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./prihlaska.component.scss'],
 })
 export class PrihlaskaComponent {
-    thaNameOfThisComponent: string = 'Prihláška';
     login: boolean = false;
 
     toggleLogin(): void {

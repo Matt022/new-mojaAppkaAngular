@@ -95,7 +95,7 @@ export class ObchodCopyComponent implements OnInit {
             maxWidth: '90vw',
             maxHeight: '95vh',
             panelClass: 'full-screen-modal',
-
+            disableClose: true
         });
 
         dialogRef.afterClosed().subscribe(result => {

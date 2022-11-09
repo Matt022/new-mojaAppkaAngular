@@ -1,6 +1,6 @@
 <section class="content">
     <h2>MyNgIf a MyNgElse</h2>
     <h3 *myNgIf="login">Odhlás sa z účtu</h3>
-    <h3 *myNgElse="!login">Prihlás sa do svojho účtu</h3>
+    <h3 *myNgElse="login">Prihlás sa do svojho účtu</h3>
     <button mat-raised-button (click)="toggleLogin()">{{login ? "Log out" : "Log in"}}</button>
 </section>

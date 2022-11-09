@@ -90,7 +90,7 @@
         border-radius: 5px;
         font-weight: 500;
         font-size: 17px;
-        height: 20px;
+        min-height: 30px;
 
         i {
             margin-right: 5px;
@@ -102,7 +102,6 @@
     }
 
     small.changes {
-
         background-color: orange;
         color: #000;
         font-weight: 600;
@@ -121,7 +120,8 @@
         transform: scale(1.1);
     }
 
-    .fa-solid, .fas.fa-trash {
+    .fa-solid,
+    .fas.fa-trash {
         margin-right: 10px;
     }
 }
@@ -143,9 +143,6 @@
     }
 }
 
-
-
-
 @mixin greenAndBlackCustomButton {
     background-color: greenyellow;
     color: rgba(39, 39, 39, 0.89);
@@ -157,7 +154,8 @@
         transform: scale(1.1);
     }
 
-    .fa-solid, .fa-brands {
+    .fa-solid,
+    .fa-brands {
         margin-right: 10px;
     }
 }
@@ -192,5 +190,32 @@
 
     .fa-solid {
         margin-right: 10px;
+    }
+}
+
+@mixin backgroundBlueAndWhiteCustomButton {
+    width: fit-content;
+    background-color: rgb(57, 125, 252);
+    color: #ffffff;
+    box-shadow: 5px 5px 10px #004766, -5px -5px 10px #0000005c, -5px -5px 10px #0084bd, 5px 5px 10px #00e0ff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 200ms;
+    border: none;
+
+    &:hover {
+        background-color: #ffffff;
+        color: rgb(57, 125, 252);
+        transform: scale(1.1);
+    }
+
+
+    i.fa-solid {
+        margin-right: 10px;
+        font-size: 20px;
     }
 }

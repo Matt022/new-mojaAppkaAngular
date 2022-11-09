@@ -92,7 +92,8 @@
 
                             <section class="justVendors" formGroupName="{{index}}">
                                 <input type="text" placeholder="názov dodávateľa..." formControlName="name">
-                                <input type="number" placeholder="množstvo..." formControlName="stockCount"><br>
+                                <input type="number" placeholder="množstvo..." formControlName="stockCount">
+                                <button type="button" mat-raised-button (click)="removeThisVendor(index)"><i class="fas fa-trash"></i></button>
 
                                 <div>
                                     <small *ngIf="(!vendorsArray.controls[index].get('name')!.valid && vendorsArray.controls[index].get('name')!.touched!) || (!vendorsArray.controls[index].get('stockCount')!.valid && vendorsArray.controls[index].get('stockCount')!.touched)">
@@ -118,8 +119,13 @@
                     <div class="reviews" formArrayName="reviews">
                         <h2>Pridávanie recenzií</h2>
 
-                        <ng-container *ngFor="let review of getReviews.controls; index as i">
-                            <textarea class="fakeTextArea" cols="65" rows="4" id="reviews" placeholder="Zadajte recenziu k produktu..." formControlName="{{i}}"></textarea>
+                        <ng-container *ngFor="let review of getReviews.controls; index as index">
+                            <section class="areaAndRemoveButton">
+
+                                <textarea class="fakeTextArea" cols="30" rows="4" placeholder="Zadajte recenziu k produktu..." formControlName="{{index}}"></textarea>
+                                <button type="button" class="removeButton this" mat-raised-button (click)="removeThisReview(index)"><i class="fas fa-trash"></i></button>
+                            </section>
+
                         </ng-container>
                         <button type="button" class="removeButton" mat-raised-button (click)="RemoveLastReview()">
                             <i class="fa-solid fa-circle-xmark"></i>Odstráň poslednú recenziu
@@ -131,17 +137,21 @@
                 </section>
 
                 <section class="buttonSubmitAndClose">
-                    <button type="submit" value="Pridaj produkt" *ngIf="!data"><i class="fa-solid fa-plus fa-2x"></i>Pridaj produkt</button>
-                    <button type="submit" value="Uložiť produkt" *ngIf="data"><i class="fa-solid fa-pen-to-square fa-2x"></i>Uložiť zmeny</button>
-                    <button type="button" mat-raised-button (click)="cancelChangesAndDialog()">Zatvoriť okno</button>
+                    <section class="submitButtons">
+
+                        <button type="submit" value="Pridaj produkt" *ngIf="!data"><i class="fa-solid fa-plus fa-2x"></i>Pridaj produkt</button>
+                        <button type="submit" value="Uložiť produkt" *ngIf="data"><i class="fa-solid fa-pen-to-square fa-2x"></i>Uložiť zmeny</button>
+                        <button type="button" mat-raised-button (click)="cancelChangesAndDialog()"><i class="fa-solid fa-xmark"></i>Zatvoriť okno</button>
+                    </section>
+
+                    <div class="submitError">
+                        <small class="error" *ngIf="submitted"><i class="fa-solid fa-circle-xmark"></i>Neplatný formulár <i class="fa-solid fa-exclamation"></i></small>
+                        <small class="success" *ngIf="sendProduct"><i class="fa-solid fa-circle-check"></i> Produkt pridaný</small>
+                        <small class="success" *ngIf="editedChanges"><i class="fa-solid fa-circle-check"></i> Zmeny boli uložené</small>
+                        <small class="changes" *ngIf="cancelChanges"><i class="fa-solid fa-plug-circle-check"></i>Zrušenie pridávania</small>
+                    </div>
                 </section>
 
-                <div class="submitError">
-                    <small class="error" *ngIf="submitted"><i class="fa-solid fa-circle-xmark"></i>Neplatný formulár <i class="fa-solid fa-exclamation"></i></small>
-                    <small class="success" *ngIf="sendProduct"><i class="fa-solid fa-circle-check"></i> Produkt pridaný</small>
-                    <small class="success" *ngIf="editedChanges"><i class="fa-solid fa-circle-check"></i> Zmeny boli uložené</small>
-                    <small class="changes" *ngIf="cancelChanges"><i class="fa-solid fa-plug-circle-check"></i>Zmeny neboli uložené</small>
-                </div>
             </form>
         </section>
     </div>

@@ -1,11 +1,16 @@
-@import "../../stylesheets/mixins";
-
 .content {
-    @include flex_Align_Justify(center, center);
+    display: block;
+    margin: auto;
+    text-align: center;
 
     h2 {
         font-weight: 900;
         font-size: 50px;
+    }
+
+    img {
+        display: block;
+        margin: auto;
     }
 
     .backToHome {
@@ -15,5 +20,4 @@
         cursor: pointer;
         border-radius: 6px;
     }
-
 }

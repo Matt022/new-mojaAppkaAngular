@@ -111,9 +111,16 @@ main {
                 }
             }
 
-            h3 {
+            h4 {
                 font-weight: 500;
                 cursor: pointer;
+                width: fit-content;
+                transition: 200ms;
+
+                &:hover {
+                    font-weight: 700;
+                    transform: scale(1.1);
+                }
             }
         }
 

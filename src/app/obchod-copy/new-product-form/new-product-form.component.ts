@@ -98,10 +98,13 @@ export class NewProductFormComponent implements OnInit {
         });
     }
 
-
     // odstránenie poslednej recenzie
     RemoveLastReview(): void {
         this.getReviews.removeAt(this.getReviews.length - 1);
+    }
+
+    removeThisReview(index: number): void{
+        this.getReviews.removeAt(index);
     }
 
     //----------------------------------------------------------------------------
@@ -129,10 +132,23 @@ export class NewProductFormComponent implements OnInit {
         });
     }
 
-    // odstránenie vendorov na kliknutie
+    // odstránenie posledného vendora na kliknutie
     removeVendor(): void {
         if (this.vendorsArray.length > 1) {
             this.vendorsArray.removeAt(this.vendorsArray.length - 1);
+        } else {
+            this.notAllowed = true;
+            setTimeout(() => {
+                this.notAllowed = false;
+            }, 1000);
+        }
+    }
+
+
+    //odstránenie posledného vendora na kliknutie
+    removeThisVendor(index: number): void {
+        if (this.vendorsArray.length > 1) {
+            this.vendorsArray.removeAt(index);
         } else {
             this.notAllowed = true;
             setTimeout(() => {
